@@ -3169,7 +3169,8 @@ textarea.form-control {
 #videoBG {
     position: fixed;
     z-index: 0;
-    width: 1920px;
-    height: 1020px;
+/*    width: 1920px;
+    height: 1020px;*/
     object-fit: cover;
+    overflow:hidden;
 }
