@@ -99,9 +99,9 @@ $(window).on('load' ,function () {
         setTimeout(function () {
             $(".se-pre-con").fadeOut("fast");
             $(".se-pre-con1").fadeOut("slow");
-        }, 1000);
+        }, 1300);
 
-    }, 1500);
+    }, 800);
 });
 
 
