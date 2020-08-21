@@ -1,10 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
+    "\\assets\\css",
+    "\\assets\\php",
     "\\css",
     "\\documentation",
     "\\js"
   ],
-  "SelectedNode": "\\css\\style.css",
+  "SelectedNode": "\\assets\\php\\form-process.php",
   "PreviewInSolutionExplorer": false
 }

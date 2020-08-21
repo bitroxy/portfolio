@@ -19,4 +19,25 @@ function myMap() {
         icon: 'img/bitroxy-logo.png',
         draggarble: false// If set to true you can drag the marker
     });
+
+    var marker2 = new google.maps.Marker({
+        position: { lat: 25.3548, lng: 51.1839 }, // Brooklyn Coordinates
+        map: map, //Map that we need to add
+        icon: 'img/bitroxy-logo.png',
+        draggarble: false// If set to true you can drag the marker
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: { lat: 26.0667, lng: 50.5577 }, // Brooklyn Coordinates
+        map: map, //Map that we need to add
+        icon: 'img/bitroxy-logo.png',
+        draggarble: false// If set to true you can drag the marker
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: { lat: 23.8859, lng: 45.0792 }, // Brooklyn Coordinates
+        map: map, //Map that we need to add
+        icon: 'img/bitroxy-logo.png',
+        draggarble: false// If set to true you can drag the marker
+    });
 }
