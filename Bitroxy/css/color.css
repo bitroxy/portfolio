@@ -205,7 +205,6 @@ p{
 .menubar {
     height: auto;
     width: 100%;
-    display:none;
 }
 .navbar-default {
     background-color: transparent;
