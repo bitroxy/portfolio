@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omlapay - Dedicated Support Team Proposal | Bitroxy</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.7;
+        color: #1e293b;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        font-size: 16px;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(96, 165, 250, 0.02) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* Header - Bitroxy Theme */
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 30%,
+          #334155 60%,
+          #475569 100%
+        );
+        color: white;
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 3px solid #3b82f6;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><circle cx="900" cy="100" r="300" fill="rgba(59,130,246,0.08)"/><circle cx="100" cy="50" r="200" fill="rgba(96,165,250,0.05)"/><polygon points="0,200 1000,0 1000,200" fill="rgba(59,130,246,0.03)"/></svg>');
+        background-size: cover;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .company-logo-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .company-logo-img {
+        height: 50px;
+        width: auto;
+        margin-bottom: 1rem;
+        filter: invert(1);
+        object-fit: contain;
+      }
+
+      .company-tagline {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .proposal-header {
+        text-align: center;
+        margin-top: 2.5rem;
+      }
+
+      .proposal-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .proposal-subtitle {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 900px;
+        margin: 0 auto;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .proposal-subtitle span {
+        display: block;
+        font-size: 1rem;
+        margin-top: 0.75rem;
+        opacity: 0.75;
+        font-weight: 300;
+      }
+
+      /* Main Content - Bitroxy Theme */
+      .main-content {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        margin: -3rem auto 3rem;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(59, 130, 246, 0.1);
+        overflow: hidden;
+        position: relative;
+        border: 2px solid rgba(59, 130, 246, 0.1);
+      }
+
+      .section {
+        padding: 5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        overflow: hidden; /* Prevent section overflow */
+      }
+
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
+      }
+
+      .section-number {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #3b82f6 100%);
+        color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        font-weight: 800;
+        flex-shrink: 0;
+        box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.4),
+          0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+
+      .section-title {
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: #64748b;
+        font-weight: 400;
+      }
+
+      /* Info Boxes - Bitroxy Theme */
+      .info-box {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+        border-left: 5px solid #3b82f6;
+        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1),
+          0 0 0 1px rgba(59, 130, 246, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .info-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+        border-radius: 50%;
+        transform: translate(30px, -30px);
+      }
+
+      .info-box.highlight {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.08) 0%,
+          rgba(96, 165, 250, 0.08) 100%
+        );
+        border-left-color: #3b82f6;
+        border: 2px solid rgba(59, 130, 246, 0.1);
+      }
+
+      .info-box.warning {
+        background: linear-gradient(
+          135deg,
+          rgba(251, 146, 60, 0.08) 0%,
+          rgba(249, 115, 22, 0.08) 100%
+        );
+        border-left-color: #f97316;
+      }
+
+      .info-box-icon {
+        font-size: 2.25rem;
+        margin-bottom: 1.25rem;
+        color: #3b82f6;
+      }
+
+      .info-box h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        color: #0f172a;
+        font-weight: 700;
+      }
+
+      .info-box p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .audit-report-box {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+        border-radius: 20px;
+        padding: 3rem;
+        margin: 3rem 0;
+        text-align: center;
+        box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.4);
+        border: 4px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .audit-report-box h3 {
+        font-size: 2rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-weight: 700;
+      }
+
+      .audit-report-box p {
+        font-size: 1.15rem;
+        opacity: 0.97;
+        line-height: 1.9;
+      }
+
+      .audit-report-box .icon {
+        font-size: 3rem;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      /* Bitroxy Innovation Animations */
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes glow {
+        0%, 100% {
+          box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.4),
+            0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        50% {
+          box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.4),
+            0 0 0 2px rgba(59, 130, 246, 0.4),
+            0 0 20px rgba(59, 130, 246, 0.3);
+        }
+      }
+
+      .section-number {
+        animation: glow 3s ease-in-out infinite;
+      }
+
+      .feature-icon {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Team Cards */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
+        margin: 3.5rem 0;
+      }
+
+      .team-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .team-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: #3b82f6;
+      }
+
+      .team-header {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #f1f5f9;
+      }
+
+      .team-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+      }
+
+      .team-role {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #0f172a;
+        line-height: 1.3;
+      }
+
+      .team-allocation {
+        color: #3b82f6;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-top: 0.25rem;
+      }
+
+      .team-responsibilities {
+        list-style: none;
+        padding: 0;
+      }
+
+      .team-responsibilities li {
+        padding: 0.75rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .team-responsibilities i {
+        color: #3b82f6;
+        margin-top: 0.35rem;
+        font-size: 0.9rem;
+      }
+
+      /* Response Time Table */
+      .response-table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin: 3rem 0;
+        border-radius: 16px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      }
+
+      .response-table {
+        width: 100%;
+        min-width: 600px;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .response-table thead {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+      }
+
+      .response-table th {
+        padding: 1.75rem 1.5rem;
+        text-align: left;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+
+      .response-table td {
+        padding: 1.75rem 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 1rem;
+      }
+
+      .response-table tbody tr:nth-child(even) {
+        background: #f8fafc;
+      }
+
+      .response-table tbody tr:hover {
+        background: #f1f5f9;
+      }
+
+      .priority-badge {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+
+      .priority-critical {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+      }
+
+      .priority-high {
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        color: white;
+      }
+
+      .priority-medium {
+        background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        color: #1e293b;
+      }
+
+      .priority-low {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        padding: 5rem 0;
+        margin: 3rem 0;
+      }
+
+      .pricing-intro {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 4rem;
+      }
+
+      .pricing-intro p {
+        font-size: 1.2rem;
+        color: #64748b;
+        line-height: 1.8;
+        font-weight: 400;
+      }
+
+      .pricing-tiers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 0 auto;
+        max-width: 1400px;
+        padding: 0 2rem;
+        align-items: center;
+      }
+
+      .pricing-card {
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      }
+
+      .pricing-card.basic,
+      .pricing-card.premium {
+        opacity: 0.88;
+      }
+
+      .pricing-card.basic:hover,
+      .pricing-card.premium:hover {
+        opacity: 1;
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.12);
+      }
+
+      .pricing-card.featured {
+        border: 4px solid #3b82f6;
+        box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.35),
+          0 0 0 1px rgba(59, 130, 246, 0.1), 0 10px 30px rgba(59, 130, 246, 0.2);
+        transform: scale(1.08) translateZ(50px);
+        z-index: 10;
+        opacity: 1;
+      }
+
+      .pricing-card.featured:hover {
+        box-shadow: 0 35px 70px -15px rgba(59, 130, 246, 0.45),
+          0 0 0 1px rgba(59, 130, 246, 0.15),
+          0 15px 40px rgba(59, 130, 246, 0.25);
+        transform: scale(1.08) translateZ(50px) translateY(-8px);
+      }
+
+      .featured-ribbon {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        font-weight: 900;
+        font-size: 0.7rem;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        z-index: 10;
+        border-radius: 20px;
+      }
+
+      .pricing-header {
+        text-align: center;
+        padding: 3.5rem 2rem 2rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-bottom: 2px solid #e5e7eb;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+      }
+
+      .pricing-card.featured .pricing-header {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        border-bottom: 3px solid #3b82f6;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+
+      .pricing-tier-badge {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-bottom: 1.25rem;
+      }
+
+      .pricing-card.basic .pricing-tier-badge {
+        background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+        color: white;
+      }
+
+      .pricing-card.featured .pricing-tier-badge {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+      }
+
+      .pricing-card.premium .pricing-tier-badge {
+        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        color: white;
+      }
+
+      .pricing-tier-name {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+        line-height: 1.1;
+      }
+
+      .pricing-description {
+        font-size: 0.95rem;
+        color: #475569;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        min-height: 50px;
+      }
+
+      .pricing-price-box {
+        padding: 1.5rem 0;
+      }
+
+      .pricing-price-container {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.35rem;
+      }
+
+      .pricing-currency {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #64748b;
+      }
+
+      .pricing-price {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1;
+        letter-spacing: -2px;
+      }
+
+      .pricing-card.featured .pricing-price {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .pricing-period {
+        font-size: 1rem;
+        color: #94a3b8;
+        font-weight: 600;
+      }
+
+      .pricing-body {
+        padding: 2rem 1.75rem;
+        flex-grow: 1;
+        background: white;
+      }
+
+      .support-badge-wrapper {
+        text-align: center;
+        margin-bottom: 2rem;
+        min-height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .support-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.25rem;
+        border-radius: 25px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .support-badge.emergency {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+      }
+
+      .support-badge.premium {
+        background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      }
+
+      .pricing-features-header {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e5e7eb;
+        text-align: center;
+      }
+
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .pricing-features li {
+        padding: 0.85rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #334155;
+        border-bottom: 1px solid #f1f5f9;
+        min-height: 55px;
+      }
+
+      .pricing-features li:last-child {
+        border-bottom: none;
+      }
+
+      .pricing-features i.fa-check-circle {
+        color: #10b981;
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .pricing-features i.fa-times-circle {
+        color: #e5e7eb;
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .pricing-card.featured .pricing-features i.fa-check-circle {
+        color: #3b82f6;
+      }
+
+      .pricing-card.premium .pricing-features i.fa-check-circle {
+        color: #7c3aed;
+      }
+
+      .pricing-features strong {
+        color: #0f172a;
+        font-weight: 700;
+      }
+
+      .feature-tag {
+        display: inline-block;
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        color: #92400e;
+        padding: 0.25rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.65rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin-left: 0.5rem;
+      }
+
+      .feature-tag.new {
+        background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+        color: white;
+      }
+
+      .feature-tag.pro {
+        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        color: white;
+      }
+
+      .pricing-footer {
+        padding: 1.75rem 1.5rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-top: 2px solid #e5e7eb;
+        text-align: center;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+
+      .pricing-card.featured .pricing-footer {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        border-top: 3px solid #3b82f6;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+
+      .pricing-footer-text {
+        font-size: 0.85rem;
+        color: #475569;
+        font-weight: 600;
+        line-height: 1.6;
+      }
+
+      .pricing-card.featured .pricing-footer-text {
+        color: #1e40af;
+        font-weight: 700;
+      }
+
+      .pricing-card.premium .pricing-footer-text {
+        color: #6d28d9;
+        font-weight: 600;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .pricing-tiers {
+          grid-template-columns: 1fr;
+          max-width: 550px;
+          gap: 2rem;
+        }
+
+        .pricing-card.featured {
+          transform: scale(1);
+        }
+
+        .pricing-card.basic,
+        .pricing-card.premium {
+          opacity: 1;
+        }
+
+        .featured-ribbon {
+          top: 15px;
+        }
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin: 3.5rem 0;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: #3b82f6;
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: 1.75rem;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+      }
+
+      .feature-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1.25rem;
+        line-height: 1.3;
+      }
+
+      .feature-description {
+        color: #64748b;
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      /* Issue List */
+      .issue-category {
+        margin: 2.5rem 0;
+        padding: 2.5rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        border-left: 5px solid #dc2626;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      .category-header {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .category-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: white;
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+      }
+
+      .category-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .issue-list {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .issue-item {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 4px solid #dc2626;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .issue-title {
+        font-weight: 700;
+        color: #0f172a;
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+      }
+
+      /* Timeline */
+      .timeline-container {
+        position: relative;
+        padding-left: 3.5rem;
+        margin: 3.5rem 0;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 26px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3.5rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: -46px;
+        top: 2rem;
+        width: 20px;
+        height: 20px;
+        background: #3b82f6;
+        border: 4px solid white;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+      }
+
+      .timeline-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+      }
+
+      .timeline-duration {
+        color: #3b82f6;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        font-size: 1.05rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #111827;
+        color: #d1d5db;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #374151;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: #f9fafb;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #d1d5db;
+        text-decoration: none;
+        line-height: 1.8;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .footer-section a:hover {
+        color: #3b82f6;
+      }
+
+      .footer-section .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .footer-section .footer-contact-item i {
+        width: 20px;
+        text-align: center;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        flex-grow: 1;
+        text-align: left;
+      }
+
+      .footer-disclaimer {
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        color: #6b7280;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      /* Responsive */
+      @media (max-width: 1400px) {
+        .pricing-tiers {
+          gap: 2rem;
+          padding: 0 1.5rem;
+        }
+
+        .pricing-card.featured {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .pricing-tiers {
+          grid-template-columns: 1fr;
+          max-width: 600px;
+          gap: 3rem;
+        }
+
+        .pricing-card.featured {
+          transform: scale(1);
+        }
+
+        .pricing-card.basic {
+          opacity: 1;
+        }
+
+        .featured-ribbon {
+          top: 28px;
+          right: -35px;
+          padding: 0.5rem 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .proposal-title {
+          font-size: 2.25rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .pricing-intro h3 {
+          font-size: 2.25rem;
+        }
+
+        .pricing-intro p {
+          font-size: 1.1rem;
+        }
+
+        .pricing-comparison-note p {
+          font-size: 1rem;
+        }
+
+        .pricing-tier-name {
+          font-size: 2rem;
+        }
+
+        .pricing-price {
+          font-size: 3.5rem;
+        }
+
+        .pricing-section {
+          padding: 3rem 0;
+        }
+
+        .pricing-tiers {
+          padding: 0 1rem;
+        }
+
+        .features-grid,
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .container {
+          padding: 0 20px;
+        }
+
+        .footer-bottom,
+        .footer-copyright {
+          text-align: center;
+          justify-content: center;
+        }
+
+        .response-table {
+          font-size: 0.85rem;
+        }
+
+        .response-table th,
+        .response-table td {
+          padding: 1rem 0.75rem;
+        }
+
+        .featured-ribbon {
+          font-size: 0.7rem;
+          padding: 0.4rem 2.5rem;
+        }
+
+        /* Mobile header improvements */
+        .company-logo-img {
+          height: 40px;
+        }
+
+        .company-tagline {
+          font-size: 0.85rem;
+          line-height: 1.4;
+        }
+
+        .company-tagline span {
+          font-size: 0.8rem;
+        }
+
+        .proposal-subtitle span {
+          font-size: 0.9rem;
+        }
+
+        .proposal-title {
+          font-size: 2rem;
+        }
+
+        .proposal-subtitle {
+          font-size: 1.1rem;
+        }
+
+        /* Mobile header layout - center everything */
+        .header div[style*="justify-content: space-between"] {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          gap: 1.5rem !important;
+        }
+
+        .company-logo-section {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+        }
+
+        .header div[style*="text-align: right"] {
+          text-align: center !important;
+        }
+
+        /* Mobile table scrolling */
+        .response-table-container {
+          margin: 2rem -20px;
+          padding: 0 20px;
+        }
+      }
+
+      /* Additional responsive breakpoints */
+      @media (max-width: 480px) {
+        .company-logo-img {
+          height: 35px;
+        }
+
+        .company-tagline {
+          font-size: 0.8rem;
+        }
+
+        .company-tagline span {
+          font-size: 0.75rem;
+        }
+
+        .proposal-title {
+          font-size: 1.8rem;
+        }
+
+        .proposal-subtitle {
+          font-size: 1rem;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              flex-wrap: wrap;
+              gap: 2rem;
+              margin-bottom: 3rem;
+            "
+          >
+            <div class="company-logo-section">
+              <img
+                src="https://bitroxy.co/img/bitroxy-logo-nobg.png"
+                alt="BITROXY"
+                class="company-logo-img"
+              />
+              <div class="company-tagline">
+                Creativity Meets Innovation<br>
+                <span style="font-size: 0.9rem; opacity: 0.8;">Block Chain | AI | IOT</span>
+              </div>
+            </div>
+            <div style="text-align: right; color: rgba(255, 255, 255, 0.9);">
+              <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.25rem;">Proposal Date</div>
+              <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem;">
+                October 05, 2025
+              </div>
+              <div style="
+                font-size: 0.85rem;
+                opacity: 0.75;
+                background: rgba(59, 130, 246, 0.2);
+                padding: 0.25rem 0.75rem;
+                border-radius: 12px;
+                display: inline-block;
+              ">
+                Ref: BTX-2025-OML-SUPPORT-001
+              </div>
+            </div>
+          </div>
+
+          <div class="proposal-header">
+            <h1 class="proposal-title">Omlapay - Dedicated Support Team</h1>
+            <p class="proposal-subtitle">
+              Post-MVP Support & Maintenance for Crypto FinTech Platform<br>
+              <span style="font-size: 1rem; opacity: 0.8; font-weight: 500;">
+                Powered by Bitroxy's Innovation-Driven Technology Solutions
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Section 1: Executive Summary -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">1</div>
+            <div>
+              <h2 class="section-title">Executive Summary</h2>
+              <p class="section-subtitle">
+                Enterprise-grade support for seamless production operations and
+                platform excellence
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box highlight">
+            <div class="info-box-icon"><i class="fas fa-handshake"></i></div>
+            <div class="info-box-content">
+              <h4>Partnership Objective</h4>
+              <p>
+                Bitroxy proposes to provide a
+                <strong>dedicated, full-time support team</strong> exclusively
+                assigned to Omlapay for comprehensive maintenance and support of
+                your production platform. Our team will ensure platform
+                stability, security, and continuous uptime as your user base
+                grows, providing monitoring and rapid response to any technical
+                issues. With our expertise in <strong>Block Chain, AI, and IoT solutions</strong>,
+                we bring innovation-driven support to your FinTech platform.
+              </p>
+              <p style="margin-top: 1.25rem">
+                <strong>Engagement Type:</strong> Post-MVP Production Support &
+                Maintenance<br />
+                <strong>Support Coverage:</strong> Business hours support with
+                emergency escalation options<br />
+                <strong>Technology Stack:</strong> NestJS Backend | Next.js
+                Admin | Flutter Mobile | Blockchain Integration | AI-Powered Analytics
+              </p>
+            </div>
+          </div>
+
+          <div class="audit-report-box">
+            <h3>
+              <i class="fas fa-file-alt icon"></i> Detailed Technical Audit
+              Report Attached
+            </h3>
+            <p>
+              We have completed a comprehensive technical audit of the Omlapay
+              platform (Backend API, Admin Dashboard, Pool System Dashboard, and
+              Flutter Mobile Application). The detailed audit report is attached
+              separately and includes severity ratings, risk assessments, and
+              specific recommendations for all identified issues.
+            </p>
+          </div>
+
+          <div class="info-box warning" style="margin-top: 2.5rem">
+            <div class="info-box-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="info-box-content">
+              <h4>Critical Pre-Deployment Recommendation</h4>
+              <p>
+                Based on our technical audit, we have identified
+                <strong>several CRITICAL security vulnerabilities</strong> that
+                must be resolved before deploying to production. We strongly
+                recommend your current development team addresses these critical
+                issues immediately to prevent potential security breaches,
+                financial losses, and platform compromise.
+              </p>
+              <p style="margin-top: 1.25rem">
+                Our support team will provide comprehensive post-deployment
+                maintenance and ongoing security monitoring once your platform
+                is stabilized and launched. Please refer to the attached
+                detailed audit report for comprehensive findings and remediation
+                strategies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Dedicated Support Team Structure -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">2</div>
+            <div>
+              <h2 class="section-title">Dedicated Support Team Composition</h2>
+              <p class="section-subtitle">
+                Specialized professionals exclusively assigned to Omlapay
+              </p>
+            </div>
+          </div>
+
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-header">
+                <div class="team-icon"><i class="fab fa-bitcoin"></i></div>
+                <div>
+                  <div class="team-role">Blockchain + NestJS Developer</div>
+                  <div class="team-allocation">100% Dedicated | Full-Time</div>
+                </div>
+              </div>
+              <ul class="team-responsibilities">
+                <li>
+                  <i class="fas fa-check-circle"></i> Blockchain integration
+                  maintenance
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Cryptocurrency wallet
+                  support and troubleshooting
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> NestJS backend bug fixes
+                  and updates
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> API performance monitoring
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Transaction processing
+                  support
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Security patch
+                  implementation
+                </li>
+              </ul>
+            </div>
+
+            <div class="team-card">
+              <div class="team-header">
+                <div class="team-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div>
+                  <div class="team-role">Flutter Developer</div>
+                  <div class="team-allocation">100% Dedicated | Full-Time</div>
+                </div>
+              </div>
+              <ul class="team-responsibilities">
+                <li>
+                  <i class="fas fa-check-circle"></i> Flutter mobile app support
+                  (iOS & Android)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Mobile bug fixes and crash
+                  resolution
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> UI/UX issue resolution
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> App store compliance and
+                  updates
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Push notification
+                  debugging
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> OS compatibility updates
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="info-box highlight" style="margin-top: 3.5rem">
+            <div class="info-box-icon"><i class="fas fa-users"></i></div>
+            <div class="info-box-content">
+              <h4>Team Availability & Communication</h4>
+              <p>
+                <strong>Working Hours:</strong> Sunday to Thursday, 9 AM to 6 PM
+                GST (Saudi Arabia timezone)<br />
+                <strong>Ticket Management:</strong> JIRA-based ticketing system
+                for all support requests<br />
+                <strong>Communication:</strong> Email and WhatsApp for urgent
+                matters<br />
+                <strong>Reporting:</strong> Monthly executive summaries and
+                progress reports
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Critical Audit Findings Summary -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">3</div>
+            <div>
+              <h2 class="section-title">Critical Pre-Deployment Issues</h2>
+              <p class="section-subtitle">
+                Summary of audit findings requiring immediate attention
+              </p>
+            </div>
+          </div>
+
+          <div class="issue-category">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div>
+                <h3 class="category-title">
+                  Critical Security Vulnerabilities
+                </h3>
+              </div>
+            </div>
+            <div class="issue-list">
+              <div class="issue-item">
+                <div class="issue-title">
+                  Hardcoded API Credentials & Secrets
+                </div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  BitGo API tokens and enterprise IDs are exposed in source code
+                  across multiple services, creating risk of fund theft if
+                  repositories are compromised. Immediate migration to
+                  environment variables required.
+                </p>
+              </div>
+              <div class="issue-item">
+                <div class="issue-title">
+                  Authentication Bypass Vulnerabilities
+                </div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Incomplete JWT validation in middleware allows unauthorized
+                  access to protected routes. Admin dashboard vulnerable to
+                  authentication bypass with improper token verification.
+                </p>
+              </div>
+              <div class="issue-item">
+                <div class="issue-title">Unprotected API Endpoints</div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Multiple endpoints lack authentication guards, allowing public
+                  access to sensitive operations including ad statistics
+                  manipulation and administrative functions.
+                </p>
+              </div>
+              <div class="issue-item">
+                <div class="issue-title">Insecure Logging & Data Exposure</div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Extensive debug logging in production builds exposes sensitive
+                  data including API tokens, user PII, and internal system
+                  architecture through device logs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="issue-category" style="border-left-color: #f97316">
+            <div class="category-header">
+              <div
+                class="category-icon"
+                style="
+                  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+                "
+              >
+                <i class="fas fa-code"></i>
+              </div>
+              <div>
+                <h3 class="category-title">High Priority Technical Issues</h3>
+              </div>
+            </div>
+            <div class="issue-list">
+              <div class="issue-item" style="border-left-color: #f97316">
+                <div class="issue-title">
+                  Missing Server-Side Input Validation
+                </div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Server actions lack validation, relying only on client-side
+                  checks which can be bypassed, creating injection and data
+                  integrity risks.
+                </p>
+              </div>
+              <div class="issue-item" style="border-left-color: #f97316">
+                <div class="issue-title">Absent Audit Trail System</div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  No logging for critical security events like login attempts,
+                  password changes, or fund transfers, preventing forensic
+                  analysis and compliance.
+                </p>
+              </div>
+              <div class="issue-item" style="border-left-color: #f97316">
+                <div class="issue-title">Financial Precision Loss Risk</div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Using standard number types for balance calculations instead
+                  of high-precision decimal libraries, risking rounding errors
+                  in financial operations.
+                </p>
+              </div>
+              <div class="issue-item" style="border-left-color: #f97316">
+                <div class="issue-title">Missing SSL Certificate Pinning</div>
+                <p
+                  style="
+                    color: #64748b;
+                    font-size: 1.05rem;
+                    margin-top: 0.75rem;
+                    line-height: 1.7;
+                  "
+                >
+                  Mobile app lacks certificate pinning, leaving it vulnerable to
+                  man-in-the-middle attacks on user transactions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box warning" style="margin-top: 3rem">
+            <div class="info-box-icon"><i class="fas fa-tools"></i></div>
+            <div class="info-box-content">
+              <h4>Our Support Approach</h4>
+              <p>
+                Our dedicated support team will provide comprehensive
+                post-deployment maintenance, ensuring platform stability and
+                security once your platform goes live. We will handle ongoing
+                monitoring, bug fixes, and security updates to keep your
+                platform running smoothly and securely in production.
+              </p>
+              <p style="margin-top: 1.25rem">
+                Our support includes continuous security monitoring, regular
+                health checks, proactive identification of potential issues, and
+                rapid response to any production incidents that may arise.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Support Services & Deliverables -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">4</div>
+            <div>
+              <h2 class="section-title">Support Services & Deliverables</h2>
+              <p class="section-subtitle">
+                Comprehensive maintenance for production stability
+              </p>
+            </div>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-bug"></i></div>
+              <h3 class="feature-title">Bug Fixes</h3>
+              <p class="feature-description">
+                Resolution of all production bugs affecting user experience,
+                payment processing, security, and application stability with
+                rapid response times and thorough testing.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-virus"></i>
+              </div>
+              <h3 class="feature-title">Security Monitoring</h3>
+              <p class="feature-description">
+                Continuous security monitoring, vulnerability scanning, patch
+                implementation, and regular security assessments to protect user
+                funds and sensitive data.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-server"></i></div>
+              <h3 class="feature-title">Infrastructure Management</h3>
+              <p class="feature-description">
+                Server monitoring, uptime management, automated backups, and
+                infrastructure scaling support.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-bitcoin"></i></div>
+              <h3 class="feature-title">Blockchain Maintenance</h3>
+              <p class="feature-description">
+                Support and maintenance of existing blockchain infrastructure,
+                transaction monitoring, and cryptocurrency network compatibility
+                updates.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3 class="feature-title">Mobile App Updates</h3>
+              <p class="feature-description">
+                iOS and Android bug fixes, App Store/Play Store compliance, new
+                OS version compatibility, and crash resolution.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+              <h3 class="feature-title">Analytics & Reporting</h3>
+              <p class="feature-description">
+                Performance reports, system health monitoring, incident reports,
+                and monthly executive summaries for stakeholders.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-comments"></i></div>
+              <h3 class="feature-title">Technical Consultation</h3>
+              <p class="feature-description">
+                Strategic technical guidance, architecture recommendations,
+                technology decisions, and integration planning support.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
+              <h3 class="feature-title">JIRA Ticket Management</h3>
+              <p class="feature-description">
+                Professional ticketing system for all support requests with
+                priority tracking, SLA monitoring, and transparent progress
+                updates.
+              </p>
+            </div>
+          </div>
+
+          <h3
+            style="
+              margin: 4rem 0 2rem;
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 800;
+              text-align: center;
+            "
+          >
+            Response Time Commitment
+          </h3>
+
+          <div class="response-table-container">
+            <table class="response-table">
+              <thead>
+                <tr>
+                  <th>Priority Level</th>
+                  <th>Description</th>
+                  <th>Response Time</th>
+                  <th>Resolution Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="priority-badge priority-critical"
+                      >P0 - Critical</span
+                    >
+                  </td>
+                  <td>
+                    Production down, security breach, complete service failure,
+                    fund loss risk
+                  </td>
+                  <td><strong>30 minutes</strong></td>
+                  <td><strong>2-10 hours</strong></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="priority-badge priority-high">P1 - High</span>
+                  </td>
+                  <td>
+                    Major functionality broken, significant user impact, payment
+                    processing issues
+                  </td>
+                  <td><strong>1 hour</strong></td>
+                  <td><strong>8-30 hours</strong></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="priority-badge priority-medium"
+                      >P2 - Medium</span
+                    >
+                  </td>
+                  <td>
+                    Minor bugs, UI issues, non-critical functionality problems
+                  </td>
+                  <td><strong>4 hours</strong></td>
+                  <td><strong>2-5 days</strong></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="priority-badge priority-low">P3 - Low</span>
+                  </td>
+                  <td>
+                    Cosmetic issues, enhancement requests, documentation updates
+                  </td>
+                  <td><strong>24 hours</strong></td>
+                  <td><strong>7-14 days</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="info-box warning" style="margin-top: 2rem">
+            <div class="info-box-icon"><i class="fas fa-info-circle"></i></div>
+            <div class="info-box-content">
+              <h4>Important Note on Current Codebase</h4>
+              <p>
+                Based on our technical audit, the current MVP codebase contains
+                significant architectural and security issues that do not meet
+                enterprise-grade standards. Due to the nature of these
+                underlying problems, some critical bugs may require extended
+                resolution times beyond the standard SLA targets as they may
+                necessitate substantial code refactoring or architectural
+                changes to properly address the root causes. Our team will keep
+                you informed of any such cases and work diligently to minimize
+                downtime while ensuring fixes are implemented correctly and
+                securely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Investment & Pricing -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">5</div>
+            <div>
+              <h2 class="section-title">Investment & Pricing Structure</h2>
+              <p class="section-subtitle">
+                Flexible support packages tailored to your needs
+              </p>
+            </div>
+          </div>
+
+          <div class="pricing-section">
+            <div class="pricing-intro">
+              <p>
+                Choose the perfect support package that aligns with your
+                platform's growth trajectory and security requirements
+              </p>
+            </div>
+
+            <div class="pricing-tiers">
+              <!-- Essential Plan -->
+              <div class="pricing-card basic">
+                <div class="pricing-header">
+                  <span class="pricing-tier-badge">Starter</span>
+                  <h3 class="pricing-tier-name">Essential</h3>
+                  <p class="pricing-description">
+                    Basic maintenance for stable platforms
+                  </p>
+                  <div class="pricing-price-box">
+                    <div class="pricing-price-container">
+                      <span class="pricing-currency">SAR</span>
+                      <span class="pricing-price">16K</span>
+                      <span class="pricing-period">/mo</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-body">
+                  <div class="support-badge-wrapper">
+                    <!-- Empty space for alignment -->
+                  </div>
+                  <div class="pricing-features-header">What's Included</div>
+                  <ul class="pricing-features">
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>2 Full-Time Developers</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Technical Project
+                      Manager
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> 24/7 Emergency Support
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Security monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Logger & Audit Trails
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Security Hardening &
+                      Fixes
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Bug fixes & issue
+                      resolution
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Infrastructure
+                      monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Basic deployment
+                      support
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Monthly reports</li>
+                    <li><i class="fas fa-times-circle"></i> Weekly reports</li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> JIRA ticketing system
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Email support</li>
+                    <li><i class="fas fa-times-circle"></i> Slack workspace</li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> App Store submissions
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Mobile app maintenance
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Additional NestJS
+                      Developer
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Fix Critical Audit
+                      Issues
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Penetration Testing
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Database Optimization
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Custom Analytics
+                      Dashboard
+                    </li>
+                  </ul>
+                </div>
+                <div class="pricing-footer">
+                  <p class="pricing-footer-text">
+                    For small teams with limited budgets
+                  </p>
+                </div>
+              </div>
+
+              <!-- Professional Plan (Featured) -->
+              <div class="pricing-card featured">
+                <div class="pricing-header">
+                  <span class="pricing-tier-badge">Most Popular</span>
+                  <h3 class="pricing-tier-name">Professional</h3>
+                  <p class="pricing-description">
+                    Complete support with 24/7 coverage
+                  </p>
+                  <div class="pricing-price-box">
+                    <div class="pricing-price-container">
+                      <span class="pricing-currency">SAR</span>
+                      <span class="pricing-price">19K</span>
+                      <span class="pricing-period">/mo</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-body">
+                  <div class="support-badge-wrapper">
+                    <span class="support-badge emergency">
+                      <i class="fas fa-shield-alt"></i>
+                      24/7 Emergency P0/P1
+                    </span>
+                  </div>
+                  <div class="pricing-features-header">Essential + Premium</div>
+                  <ul class="pricing-features">
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>2 Full-Time Developers</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Technical Project Manager</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>24/7 Emergency Support</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Advanced security
+                      monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Logger & Audit Trails</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Security Hardening & Fixes</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Comprehensive bug
+                      fixes
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Infrastructure
+                      monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Advanced deployment
+                      support
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Monthly reports</li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Weekly reports</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> JIRA ticketing system
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Email + WhatsApp
+                      support
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Dedicated Slack workspace</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>App Store submissions</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Mobile app maintenance
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Additional NestJS
+                      Developer
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Fix Critical Audit
+                      Issues
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Penetration Testing
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Database Optimization
+                    </li>
+                    <li>
+                      <i class="fas fa-times-circle"></i> Custom Analytics
+                      Dashboard
+                    </li>
+                  </ul>
+                </div>
+                <div class="pricing-footer">
+                  <p class="pricing-footer-text">
+                    Perfect for production platforms
+                  </p>
+                </div>
+              </div>
+
+              <!-- Enterprise Plan -->
+              <div class="pricing-card premium">
+                <div class="pricing-header">
+                  <span class="pricing-tier-badge">Premium</span>
+                  <h3 class="pricing-tier-name">Enterprise</h3>
+                  <p class="pricing-description">
+                    Maximum security & optimization
+                  </p>
+                  <div class="pricing-price-box">
+                    <div class="pricing-price-container">
+                      <span class="pricing-currency">SAR</span>
+                      <span class="pricing-price">30K</span>
+                      <span class="pricing-period">/mo</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing-body">
+                  <div class="support-badge-wrapper">
+                    <span class="support-badge premium">
+                      <i class="fas fa-crown"></i>
+                      24/7 Premium Support
+                    </span>
+                  </div>
+                  <div class="pricing-features-header">
+                    Professional + Elite
+                  </div>
+                  <ul class="pricing-features">
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>2 Full-Time Developers</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Technical Project Manager</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>24/7 Premium Support</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Advanced security
+                      monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Logger & Audit Trails</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Security Hardening & Fixes</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Comprehensive bug
+                      fixes
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Infrastructure
+                      monitoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Advanced deployment
+                      support
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Monthly reports</li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Weekly reports</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> JIRA ticketing system
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Email + WhatsApp
+                      support
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Dedicated Slack workspace</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>App Store submissions</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i> Mobile app maintenance
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Additional NestJS Developer</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Fix Critical Audit Issues</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Penetration Testing</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Database Optimization</strong>
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle"></i>
+                      <strong>Custom Analytics Dashboard</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="pricing-footer">
+                  <p class="pricing-footer-text">
+                    For mission-critical platforms
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box warning" style="margin-top: 2.5rem">
+            <div class="info-box-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="info-box-content">
+              <h4>Items Not Included (Separate Costs)</h4>
+              <ul
+                style="padding-left: 2rem; margin-top: 1.5rem; line-height: 2"
+              >
+                <li>
+                  <strong>Infrastructure Costs:</strong> AWS/Azure hosting,
+                  database hosting, blockchain node costs
+                </li>
+                <li>
+                  <strong>Third-Party Services:</strong> SMS gateway fees, push
+                  notification services, slack, payment gateway fees, blockchain
+                  transaction fees
+                </li>
+                <li>
+                  <strong>New Feature Development:</strong> Major new features,
+                  additional integrations, significant platform enhancements
+                </li>
+                <li>
+                  <strong>Major Redesigns:</strong> Complete UI/UX overhaul,
+                  rebranding, architectural changes
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Why BAFAR Labs -->
+      <section
+        class="section"
+        style="background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)"
+      >
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">6</div>
+            <div>
+              <h2 class="section-title">Why Partner with BAFAR Labs</h2>
+              <p class="section-subtitle">
+                Your trusted technology partner for mission-critical fintech
+              </p>
+            </div>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fab fa-bitcoin"></i></div>
+              <h3 class="feature-title">Blockchain & Fintech Expertise</h3>
+              <p class="feature-description">
+                Specialized team with deep expertise in blockchain technology,
+                cryptocurrency platforms, DeFi applications, and secure
+                financial systems across multiple networks.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-globe"></i></div>
+              <h3 class="feature-title">GCC Market Knowledge</h3>
+              <p class="feature-description">
+                Deep understanding of Saudi Arabia and GCC fintech regulations,
+                local payment integrations, and regional compliance
+                requirements.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-award"></i></div>
+              <h3 class="feature-title">Proven Track Record</h3>
+              <p class="feature-description">
+                15+ successful AI platforms and enterprise solutions delivered
+                across Saudi Arabia, UAE, and globally including fintech
+                platforms and AI-powered applications.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3 class="feature-title">Security-First Approach</h3>
+              <p class="feature-description">
+                Cybersecurity at the core of everything we build, with regular
+                security audits, compliance with international standards, and
+                proactive threat monitoring.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-headset"></i></div>
+              <h3 class="feature-title">Responsive Support</h3>
+              <p class="feature-description">
+                Dedicated support channels with rapid response times,
+                professional ticket management, and clear escalation paths
+                ensuring minimal downtime.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+              <h3 class="feature-title">Long-Term Partnership</h3>
+              <p class="feature-description">
+                Not just a vendor, but a committed technology partner invested
+                in your success, providing strategic guidance and continuous
+                innovation.
+              </p>
+            </div>
+          </div>
+
+          <h3
+            style="
+              margin: 4rem 0 2.5rem;
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 800;
+              text-align: center;
+            "
+          >
+            Portfolio Highlights
+          </h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                "
+              >
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3 class="feature-title">
+                HiringPartner.ai - AI Recruitment Platform
+              </h3>
+              <p class="feature-description">
+                AI-powered recruitment SaaS revolutionizing hiring with
+                intelligent candidate matching, automated screening, and
+                predictive analytics. Serving companies globally with advanced
+                machine learning algorithms.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+                "
+              >
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3 class="feature-title">Enterprise AI Agents & Automation</h3>
+              <p class="feature-description">
+                Custom AI calling agents for sales and customer support,
+                WhatsApp AI bots, automated workflow engines, and intelligent
+                CRM integrations. AI-powered lead qualification and order
+                processing systems.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+                "
+              >
+                <i class="fas fa-image"></i>
+              </div>
+              <h3 class="feature-title">
+                AI Image Generation & Computer Vision
+              </h3>
+              <p class="feature-description">
+                Custom AI-powered product image generation, automated visual
+                content creation, and computer vision solutions for e-commerce,
+                marketing, and enterprise applications.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                "
+              >
+                <i class="fas fa-plane"></i>
+              </div>
+              <h3 class="feature-title">Enterprise Travel & GRO Platform</h3>
+              <p class="feature-description">
+                AI-powered enterprise request management system for travel
+                bookings, GRO services, and custom workflows with intelligent
+                automation, approval workflows, and comprehensive analytics.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                "
+              >
+                <i class="fas fa-utensils"></i>
+              </div>
+              <h3 class="feature-title">Major Saudi Fast Food Chain ERP</h3>
+              <p class="feature-description">
+                Complete enterprise ERP managing 15+ outlets, inventory, supply
+                chain, financials, and multi-location operations with real-time
+                sync. Serving 100,000+ customers monthly.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div
+                class="feature-icon"
+                style="
+                  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+                "
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <h3 class="feature-title">E-Commerce & Retail Solutions</h3>
+              <p class="feature-description">
+                Multiple high-traffic e-commerce platforms including AATAA KIDS
+                (GCC marketplace), BuildersBuddy B2B construction platform, and
+                custom retail solutions with payment integrations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Terms & Engagement -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">7</div>
+            <div>
+              <h2 class="section-title">Terms & Engagement Model</h2>
+              <p class="section-subtitle">
+                Clear, transparent, and fair partnership terms
+              </p>
+            </div>
+          </div>
+
+          <h3
+            style="
+              margin: 2.5rem 0 2rem;
+              font-size: 1.85rem;
+              color: #0f172a;
+              font-weight: 700;
+            "
+          >
+            Contract Terms
+          </h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <h3 class="feature-title">Contract Duration</h3>
+              <p class="feature-description">
+                <strong>Month-to-month rolling contract</strong> with 30-day
+                cancellation notice. Complete flexibility as your business needs
+                evolve.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+              <h3 class="feature-title">Payment Terms</h3>
+              <p class="feature-description">
+                <strong>Monthly advance payment</strong> due on 1st of each
+                month. Bank transfer or credit card. Invoiced 5 days in advance.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <h3 class="feature-title">Legal Framework</h3>
+              <p class="feature-description">
+                <strong>Master Services Agreement + NDA</strong> protecting both
+                parties. IP ownership retained by client. Governed by UAE/KSA
+                law.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-clock"></i></div>
+              <h3 class="feature-title">Working Hours</h3>
+              <p class="feature-description">
+                <strong>Sunday-Thursday, 9 AM-6 PM GST</strong> for standard
+                support. Emergency escalation available for critical issues
+                (Professional & Enterprise plans).
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-exchange-alt"></i>
+              </div>
+              <h3 class="feature-title">Team Continuity</h3>
+              <p class="feature-description">
+                <strong>Immediate replacement guarantee</strong> if any team
+                member leaves, with equivalent or better skill level at no extra
+                cost.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+              <h3 class="feature-title">Scope Definition</h3>
+              <p class="feature-description">
+                <strong
+                  >Support = maintenance, bug fixes & security updates.</strong
+                >
+                New features or major changes quoted separately.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Next Steps -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">8</div>
+            <div>
+              <h2 class="section-title">Next Steps to Get Started</h2>
+              <p class="section-subtitle">
+                Simple onboarding process to activate your support team
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">
+                Step 1: Proposal Review & Discussion
+              </div>
+              <div class="timeline-duration">1-2 Days</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Review this proposal and detailed audit report, schedule video
+                call for questions, discuss priorities and support requirements,
+                select the most suitable support package.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">Step 2: Contract & Legal</div>
+              <div class="timeline-duration">2-3 Days</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Execute Master Services Agreement, sign NDA, finalize SLA terms
+                and response time commitments, process first month payment.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">
+                Step 3: Team Mobilization & Access
+              </div>
+              <div class="timeline-duration">2-3 Days</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Assign dedicated team members, setup JIRA ticketing system,
+                establish communication channels (Slack/Email/WhatsApp based on
+                plan), provide repository and server access.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">
+                Step 4: Knowledge Transfer & Platform Review
+              </div>
+              <div class="timeline-duration">Week 1</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Comprehensive codebase review, infrastructure walkthrough,
+                detailed audit findings discussion, and complete handover from
+                current team.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">
+                Step 5: Monitoring Setup & Documentation
+              </div>
+              <div class="timeline-duration">Week 2</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Establish monitoring systems, configure alerting, create
+                runbooks, and document all critical processes and procedures.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-title">Step 6: Full Support Activation</div>
+              <div class="timeline-duration">Week 3</div>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                Complete support services active, monitoring operational, JIRA
+                ticketing system live, regular reporting commenced, full
+                handover complete.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box highlight" style="margin-top: 4rem">
+            <div class="info-box-icon"><i class="fas fa-rocket"></i></div>
+            <div class="info-box-content">
+              <h4>Ready to Secure Your Platform?</h4>
+              <p style="margin-bottom: 1.75rem">
+                We understand Omlapay is at a critical junction—preparing for
+                production launch while ensuring platform stability and
+                security. Our dedicated support team is ready to provide the
+                technical excellence, continuous monitoring, and rapid response
+                your platform needs during this pivotal phase.
+              </p>
+              <p style="margin-bottom: 1.75rem; font-size: 1.05rem">
+                <strong>Contact Information:</strong><br />
+                <strong>Email:</strong> info@bitroxy.co<br />
+                <strong>Phone:</strong> +91 7907264669<br />
+                <strong>Address:</strong> Kozhikode, Kerala, India
+              </p>
+              <p
+                style="
+                  padding: 2rem;
+                  background: rgba(59, 130, 246, 0.1);
+                  border-radius: 12px;
+                  font-weight: 600;
+                  color: #1e40af;
+                  font-size: 1.1rem;
+                "
+              >
+                We're committed to Omlapay's success—from production launch
+                support to continuous platform excellence. Let's build something
+                extraordinary together.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>BITROXY</h4>
+            <p style="font-weight: 600; color: #e5e7eb">
+              Creativity Meets Innovation
+            </p>
+            <p style="font-size: 0.9rem">
+              We Work As A Team - Delivering cutting-edge Block Chain, AI, and IoT solutions
+              that bridge the gap between the physical and digital world.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Information</h4>
+            <a href="mailto:info@bitroxy.co" class="footer-contact-item">
+              <i class="fas fa-envelope"></i>info@bitroxy.co
+            </a>
+            <a href="tel:+917907264669" class="footer-contact-item">
+              <i class="fas fa-phone"></i>+91 7907264669
+            </a>
+            <a
+              href="http://bitroxy.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-contact-item"
+            >
+              <i class="fas fa-globe"></i>bitroxy.co
+            </a>
+            <p class="footer-contact-item">
+              <i class="fas fa-map-marker-alt"></i>Kozhikode, Kerala, India
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Project Details</h4>
+            <p><strong>Proposal Reference:</strong> BTX-2025-OML-SUPPORT-001</p>
+            <p><strong>Date:</strong> October 05, 2025</p>
+            <p><strong>Validity:</strong> 30 Days</p>
+            <p><strong>Services:</strong> Full Stack | ML | Blockchain | IoT</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            copyright and design: bitroxy
+          </p>
+        </div>
+        <div class="footer-disclaimer">
+          <p>
+            This proposal contains confidential and proprietary information. The
+            details provided are based on initial requirements; final scope,
+            timeline, and pricing are subject to confirmation after detailed
+            discovery.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(
+          ".feature-card, .team-card, .timeline-item, .issue-category, .pricing-card"
+        )
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+
+      console.log(
+        "Omlapay Dedicated Support Team Proposal - Loaded Successfully"
+      );
+      console.log("BAFAR Labs - Enterprise Digital Solutions & AI Innovation");
+    </script>
+  </body>
+</html>
