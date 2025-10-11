@@ -1,0 +1,3844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      OmlaPay Phase 1 MVP - Enterprise Architecture & Security Enhancement | Bitroxy
+    </title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        color: #1e293b;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        font-size: 16px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* Header - Bitroxy Theme */
+      .header {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 30%,
+          #334155 60%,
+          #475569 100%
+        );
+        color: white;
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 3px solid #3b82f6;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><circle cx="900" cy="100" r="300" fill="rgba(255,255,255,0.05)"/><circle cx="100" cy="50" r="200" fill="rgba(255,255,255,0.03)"/></svg>');
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .company-logo-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .company-logo-img {
+        height: 50px;
+        width: auto;
+        margin-bottom: 1rem;
+        filter: invert(1);
+      }
+
+      .company-tagline {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        font-weight: 400;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 300;
+      }
+
+      .proposal-header {
+        text-align: center;
+        margin-top: 2.5rem;
+      }
+
+      .proposal-title {
+        font-size: 3.2rem;
+        font-weight: 800;
+        margin-bottom: 1.25rem;
+        line-height: 1.2;
+      }
+
+      .proposal-subtitle {
+        font-size: 1.35rem;
+        opacity: 0.95;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Critical Badge - Bitroxy Theme */
+      .critical-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        color: #1e40af;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Main Content - Bitroxy Theme */
+      .main-content {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        margin: -3rem auto 3rem;
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+      }
+
+      .section {
+        padding: 5rem 0;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
+      }
+
+      .section-number {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #3b82f6 100%);
+        color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        font-weight: 800;
+        flex-shrink: 0;
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+      }
+
+      .section-title {
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: #64748b;
+      }
+
+      /* Info Boxes - Bitroxy Theme */
+      .info-box {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+        border-left: 5px solid #3b82f6;
+        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1),
+                    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .info-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+        border-radius: 50%;
+        transform: translate(30px, -30px);
+      }
+
+      .info-box.highlight {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.08) 0%,
+          rgba(37, 99, 235, 0.08) 100%
+        );
+        border-left-color: #3b82f6;
+        border: 2px solid rgba(59, 130, 246, 0.1);
+      }
+
+      .info-box.warning {
+        background: linear-gradient(
+          135deg,
+          rgba(245, 158, 11, 0.08) 0%,
+          rgba(217, 119, 6, 0.08) 100%
+        );
+        border-left-color: #f59e0b;
+      }
+
+      .info-box-icon {
+        font-size: 2.25rem;
+        margin-bottom: 1.25rem;
+        color: #3b82f6;
+      }
+
+      .info-box h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        color: #0f172a;
+        font-weight: 700;
+      }
+
+      .architecture-diagram {
+        background: white;
+        border: 3px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 3rem;
+        margin: 3rem 0;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .diagram-title {
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 3px solid #dc2626;
+      }
+
+      .arch-layer {
+        margin: 2rem 0;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 2px solid #e2e8f0;
+      }
+
+      .layer-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .layer-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.25rem;
+      }
+
+      .layer-components {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .component-box {
+        background: #f8fafc;
+        padding: 1.25rem;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .component-box:hover {
+        border-color: #dc2626;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px -3px rgba(220, 38, 38, 0.2);
+      }
+
+      .component-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        color: #dc2626;
+      }
+
+      .component-name {
+        font-weight: 600;
+        color: #0f172a;
+        font-size: 0.95rem;
+      }
+
+      .workflow-diagram {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+        border: 2px solid #e2e8f0;
+      }
+
+      .workflow-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        border-left: 4px solid #dc2626;
+      }
+
+      .step-number {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+
+      .milestone-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        margin: 3rem 0;
+        align-items: stretch;
+      }
+
+      .milestone-card {
+        background: white;
+        border: 3px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 0;
+        transition: all 0.3s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .milestone-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.15);
+        border-color: #dc2626;
+      }
+
+      .milestone-header {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .milestone-number {
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+      }
+
+      .milestone-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+      }
+
+      .milestone-duration {
+        font-size: 1rem;
+        opacity: 0.95;
+        font-weight: 600;
+      }
+
+      .milestone-body {
+        padding: 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .milestone-deliverables {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+      }
+
+      .milestone-deliverables li {
+        padding: 0.75rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .milestone-deliverables li:last-child {
+        border-bottom: none;
+      }
+
+      .milestone-deliverables i {
+        color: #dc2626;
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+      }
+
+      /* Milestone Footer - Bitroxy Theme */
+      .milestone-footer {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        padding: 1.5rem 2rem;
+        text-align: center;
+        border-top: 2px solid #3b82f6;
+        margin-top: auto;
+      }
+
+      .milestone-cost {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #1e40af;
+        margin-bottom: 0.5rem;
+      }
+
+      .milestone-payment {
+        font-size: 0.9rem;
+        color: #78350f;
+        font-weight: 600;
+      }
+
+      .milestone-section-heading {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+      }
+
+      .milestone-section-heading.acceptance {
+        margin: 2rem 0 1rem;
+      }
+
+      .technical-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .technical-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s;
+      }
+
+      .technical-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.12);
+        border-color: #dc2626;
+      }
+
+      .technical-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 15px -3px rgba(220, 38, 38, 0.3);
+      }
+
+      .technical-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+      }
+
+      .technical-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .technical-list li {
+        padding: 0.5rem 0;
+        color: #64748b;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .technical-list i {
+        color: #dc2626;
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 3rem 0;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      }
+
+      .comparison-table thead {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+      }
+
+      .comparison-table th {
+        padding: 1.5rem;
+        text-align: left;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .comparison-table td {
+        padding: 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .comparison-table tbody tr:nth-child(even) {
+        background: #f8fafc;
+      }
+
+      .comparison-table tbody tr:hover {
+        background: #fef2f2;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .status-current {
+        background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        color: white;
+      }
+
+      .status-fixed {
+        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        color: white;
+      }
+
+      .timeline-container {
+        position: relative;
+        padding-left: 3.5rem;
+        margin: 3rem 0;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 26px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: -46px;
+        top: 2rem;
+        width: 20px;
+        height: 20px;
+        background: #dc2626;
+        border: 4px solid white;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.4);
+      }
+
+      /* Footer - Bitroxy Theme */
+      .footer {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        color: #d1d5db;
+        padding: 4rem 0 2rem;
+        border-top: 3px solid #3b82f6;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #374151;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: #f9fafb;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .footer-contact-item {
+        display: block;
+        color: #d1d5db;
+        text-decoration: none;
+        margin-bottom: 0.75rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-contact-item:hover {
+        color: #3b82f6;
+      }
+
+      .footer-contact-item i {
+        margin-right: 0.75rem;
+        width: 16px;
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        text-align: center;
+      }
+
+      @media (max-width: 1200px) and (min-width: 769px) {
+        .milestone-grid {
+          gap: 1.5rem;
+        }
+
+        .milestone-cost {
+          font-size: 2rem;
+        }
+
+        .milestone-title {
+          font-size: 1.4rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .proposal-title {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .milestone-grid,
+        .technical-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .layer-components {
+          grid-template-columns: 1fr;
+        }
+
+        .milestone-header {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 2rem;
+              margin-bottom: 2.5rem;
+            "
+          >
+            <div class="company-logo-section">
+              <img
+                src="https://bitroxy.co/img/bitroxy-logo-nobg.png"
+                alt="BITROXY"
+                class="company-logo-img"
+                
+              />
+              <div class="company-tagline">
+                Creativity Meets Innovation<br>
+                <span style="font-size: 0.9rem; opacity: 0.8">Technology Solutions</span>
+              </div>
+            </div>
+            <div style="text-align: right">
+              <div style="font-size: 0.95rem; opacity: 0.85">
+                Change Request Date
+              </div>
+              <div style="font-weight: 700; font-size: 1.1rem">
+                October 12, 2025
+              </div>
+              <div style="font-size: 0.9rem; opacity: 0.85; margin-top: 0.5rem">
+                Ref: BTX-2025-OML-CR-MVP1-002
+              </div>
+            </div>
+          </div>
+
+          <div class="proposal-header">
+            <h1 class="proposal-title">OmlaPay Phase 1 MVP Enhancement</h1>
+            <p class="proposal-subtitle">
+              Enterprise-Grade Architecture Implementation, Security Hardening & Core Transaction System<br>
+              <span style="font-size: 1rem; opacity: 0.8; font-weight: 500;">
+                Powered by Bitroxy's Innovation-Driven Technology Solutions
+              </span>
+            </p>
+            <div class="critical-badge">
+              <i class="fas fa-shield-alt"></i> Production-Ready MVP Change
+              Request
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <!-- Section 1: Executive Summary -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">1</div>
+            <div>
+              <h2 class="section-title">Executive Summary</h2>
+              <p class="section-subtitle">
+                Transform into production grade MVP
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box critical">
+            <div class="info-box-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h4>Project Context & Critical Need</h4>
+            <p style="text-align: justify">
+              Following Bitroxy's comprehensive technical audit and
+              architecture assessment of OmlaPay, we have identified
+              <strong
+                >critical gaps between the current MVP codebase and enterprise
+                production requirements</strong
+              >
+              for a financial platform. The audit revealed:
+            </p>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-times-circle"
+                  style="color: #dc2626; margin-top: 0.25rem"
+                ></i
+                ><strong>12 CRITICAL security vulnerabilities</strong>that pose
+                direct financial loss and breach risks
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-times-circle"
+                  style="color: #dc2626; margin-top: 0.25rem"
+                ></i
+                ><strong>Core transaction system incomplete</strong> -
+                dual-layer (on-chain/off-chain) flows not functioning per
+                requirements
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-times-circle"
+                  style="color: #dc2626; margin-top: 0.25rem"
+                ></i
+                ><strong>No production architecture</strong> - missing audit
+                trails, monitoring systems
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-times-circle"
+                  style="color: #dc2626; margin-top: 0.25rem"
+                ></i
+                ><strong>Production infrastructure absent</strong> - no CI/CD,
+                monitoring, or deployment architecture
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-box success">
+            <div class="info-box-icon" style="color: #16a34a">
+              <i class="fas fa-target"></i>
+            </div>
+            <h4>Transformation Objective</h4>
+            <p style="text-align: justify">
+              This CR will <strong>completely rebuild the foundation</strong> of
+              OmlaPay according to enterprise architecture standards (SAD v1.1),
+              delivering:
+            </p>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                ><strong>Security-by-design architecture</strong> with zero
+                critical vulnerabilities
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                ><strong>Complete dual-layer transaction system</strong> -
+                deposit, internal (on/off-chain), external withdrawal
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                ><strong>Production infrastructure</strong> - logging, audit
+                trails, monitoring
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                ><strong>Production-ready deployment</strong> -
+                containerization, CI/CD, WAF, auto-scaling
+              </li>
+            </ul>
+          </div>
+
+          <div
+            style="
+              background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+              border-radius: 16px;
+              padding: 2.5rem;
+              margin-top: 2.5rem;
+              border: 3px solid #fbbf24;
+            "
+          >
+            <div style="text-align: center">
+              <div
+                style="
+                  font-size: 0.9rem;
+                  font-weight: 800;
+                  color: #78350f;
+                  text-transform: uppercase;
+                  letter-spacing: 1.5px;
+                  margin-bottom: 1rem;
+                "
+              >
+                Total Project Investment
+              </div>
+              <div
+                style="
+                  font-size: 3.5rem;
+                  font-weight: 900;
+                  color: #92400e;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                SAR 90,000
+              </div>
+              <div style="font-size: 1.1rem; color: #78350f; font-weight: 600">
+                3 Milestone Payments | 14-16 Weeks Delivery | 30-Day Warranty
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Target Architecture -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">2</div>
+            <div>
+              <h2 class="section-title">Target Enterprise Architecture</h2>
+              <p class="section-subtitle">
+                Production-grade multi-tier system design per SAD v1.1
+              </p>
+            </div>
+          </div>
+
+          <div class="architecture-diagram">
+            <div class="diagram-title">
+              <i class="fas fa-sitemap"></i> OmlaPay Enterprise System
+              Architecture
+            </div>
+
+            <!-- Layer 1: Client Applications -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+                border-color: #3b82f6;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #3b82f6 0%,
+                      #2563eb 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-users"></i>
+                </div>
+                <span>Client Application Layer</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="component-name">Flutter Mobile App</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    iOS & Android | BLoC Pattern
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-user-shield"></i>
+                  </div>
+                  <div class="component-name">Admin Dashboard</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Next.js | Server Components
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-swimming-pool"></i>
+                  </div>
+                  <div class="component-name">Pool System</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Next.js | Wallet Management
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 2: Security & Routing -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+                border-color: #f59e0b;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #f59e0b 0%,
+                      #d97706 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>Security & Routing Layer</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-network-wired"></i>
+                  </div>
+                  <div class="component-name">API Gateway</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Request Routing | Auth
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-fire"></i></div>
+                  <div class="component-name">WAF</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Web Application Firewall
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                  </div>
+                  <div class="component-name">Rate Limiter</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    DDoS Protection
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-lock"></i></div>
+                  <div class="component-name">SSL/TLS</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Certificate Pinning
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 3: Application Services -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+                border-color: #dc2626;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #dc2626 0%,
+                      #991b1b 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-server"></i>
+                </div>
+                <span>Application Services Layer (NestJS Backend)</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-user-lock"></i>
+                  </div>
+                  <div class="component-name">Auth Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    JWT | RBAC
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-users"></i></div>
+                  <div class="component-name">User Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Profile | KYC
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-wallet"></i>
+                  </div>
+                  <div class="component-name">Wallet Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    BitGo Integration
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                  </div>
+                  <div class="component-name">Transaction Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    On/Off Chain
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-bell"></i></div>
+                  <div class="component-name">Notification Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    FCM | Twilio
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-history"></i>
+                  </div>
+                  <div class="component-name">Audit Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Immutable Logs
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="component-name">Logging Service</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Structured JSON
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 4: Data & Infrastructure -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+                border-color: #10b981;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #10b981 0%,
+                      #059669 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-database"></i>
+                </div>
+                <span>Data & Infrastructure Layer</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <div class="component-name">PostgreSQL</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Primary DB | DECIMAL Types
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-bolt"></i></div>
+                  <div class="component-name">Redis</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Cache | Sessions
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-tasks"></i></div>
+                  <div class="component-name">BullMQ</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Job Queue | Workers
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-hdd"></i></div>
+                  <div class="component-name">Backup Storage</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Automated Backups
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 5: External Services -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+                border-color: #6366f1;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #6366f1 0%,
+                      #4f46e5 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-plug"></i>
+                </div>
+                <span>External Services & Integrations</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fab fa-bitcoin"></i>
+                  </div>
+                  <div class="component-name">BitGo API</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Wallet Management
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-link"></i></div>
+                  <div class="component-name">Tron Network</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Blockchain
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-sms"></i></div>
+                  <div class="component-name">Twilio</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    SMS | OTP
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-bell"></i></div>
+                  <div class="component-name">Firebase FCM</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Push Notifications
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-cloud"></i></div>
+                  <div class="component-name">Cloudinary</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Media Storage
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 6: Monitoring & Observability -->
+            <div
+              class="arch-layer"
+              style="
+                background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+                border-color: #ec4899;
+              "
+            >
+              <div class="layer-title">
+                <div
+                  class="layer-icon"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #ec4899 0%,
+                      #db2777 100%
+                    );
+                  "
+                >
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <span>Monitoring & Observability Layer</span>
+              </div>
+              <div class="layer-components">
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-heartbeat"></i>
+                  </div>
+                  <div class="component-name">Health Checks</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    /health Endpoints
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon"><i class="fas fa-bug"></i></div>
+                  <div class="component-name">Error Tracking</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Real-time Monitoring
+                  </div>
+                </div>
+                <div class="component-box">
+                  <div class="component-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="component-name">Tamper-proof Logging</div>
+                  <div
+                    style="
+                      font-size: 0.8rem;
+                      color: #64748b;
+                      margin-top: 0.5rem;
+                    "
+                  >
+                    Structured JSON Logs
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="info-box"
+            style="margin-top: 2rem; border-left-color: #3b82f6"
+          >
+            <i class="fas fa-info-circle" style="color: #3b82f6"></i>
+            <p>
+              <strong>Note:</strong> The architecture and technologies outlined
+              above may be subject to change based on ongoing research,
+              technical discoveries, and real-world scenarios encountered during
+              development. Any significant architectural changes will be
+              communicated and approved before implementation.
+            </p>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin: 4rem 0 2rem;
+            "
+          >
+            <i class="fas fa-project-diagram"></i> Critical Transaction
+            Workflows
+          </h3>
+
+          <!-- Workflow 1: Deposit -->
+          <div class="workflow-diagram">
+            <h4
+              style="
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #dc2626;
+                margin-bottom: 2rem;
+              "
+            >
+              Workflow 1: User Deposit (On-Chain)
+            </h4>
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >User Requests Deposit Address</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Flutter App → Backend API: POST
+                  /api/v1/wallet/generate-address
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong style="color: #0f172a">Unique Wallet Generation</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Backend → BitGo API: Generate unique Tron wallet, encrypt
+                  keys, store in PostgreSQL
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >User Sends Funds to Address</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  User transfers USDT from external wallet. Network gas fees
+                  paid by user.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong style="color: #0f172a">Webhook Confirmation</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Tron Network → BitGo → Backend Webhook: Transaction confirmed,
+                  balance updated
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">5</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >Auto-Sweep to Pool Wallet</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Background Worker: Transfer from user wallet → Company Pool
+                  Wallet. Gas paid from Gas Tank.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">6</div>
+              <div>
+                <strong style="color: #0f172a">Audit & Notification</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Create immutable audit log, update user internal balance, send
+                  FCM notification
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workflow 2: Internal Transfer -->
+          <div class="workflow-diagram">
+            <h4
+              style="
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #dc2626;
+                margin-bottom: 2rem;
+              "
+            >
+              Workflow 2: Internal Transfer (Off-Chain)
+            </h4>
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong style="color: #0f172a">Initiate Transfer</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  User enters recipient (wallet address OR phone number from
+                  contacts), amount, passcode
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >Validation & Authorization</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Backend validates JWT, passcode. Checks sender balance.
+                  Validates recipient exists in DB.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >Atomic Ledger Update (Database Transaction)</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  BEGIN TRANSACTION → Debit sender balance → Credit recipient
+                  balance → Create Transaction records → COMMIT. Uses
+                  pessimistic locking.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >Audit Trail & Notifications</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Log to audit service, send push notifications to both users.
+                  Funds remain in pool custody.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workflow 3: External Withdrawal -->
+          <div class="workflow-diagram">
+            <h4
+              style="
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #dc2626;
+                margin-bottom: 2rem;
+              "
+            >
+              Workflow 3: External Withdrawal (On-Chain)
+            </h4>
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong style="color: #0f172a">User Requests Withdrawal</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  User enters external Tron address, amount, authenticates with
+                  passcode
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >Address Detection & Fee Calculation</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  System detects address is external (not in DB). Calculate:
+                  network gas fee + configurable service fee.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong style="color: #0f172a">Internal Balance Debit</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Lock funds by debiting user's internal balance (amount +
+                  fees). Create pending withdrawal record.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong style="color: #0f172a"
+                  >On-Chain Transaction Execution</strong
+                >
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Background Worker: Retrieve Hot Pool Wallet credentials →
+                  BitGo API broadcast transaction → Wait for confirmations
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">5</div>
+              <div>
+                <strong style="color: #0f172a">Confirmation & Audit</strong>
+                <p style="color: #64748b; margin-top: 0.5rem">
+                  Update withdrawal status, store TX hash, create audit log,
+                  send notification with blockchain explorer link
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Current vs Target State -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">3</div>
+            <div>
+              <h2 class="section-title">
+                Gap Analysis: Current vs Enterprise Standard
+              </h2>
+              <p class="section-subtitle">
+                Critical deficiencies preventing production launch
+              </p>
+            </div>
+          </div>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Current State</th>
+                <th>Enterprise Target</th>
+                <th>Risk Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Secrets Management</strong></td>
+                <td>Hardcoded in source code (BitGo keys)</td>
+                <td>AWS Secrets Manager / HashiCorp Vault</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>JWT Authentication</strong></td>
+                <td>Incomplete validation (signature not checked)</td>
+                <td>Full cryptographic validation + claims verification</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Input Validation</strong></td>
+                <td>Client-side only, easily bypassed</td>
+                <td>Zod schemas on all endpoints (server-side)</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Logging System</strong></td>
+                <td>console.log with PII exposure</td>
+                <td>Structured JSON logging + sanitization</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Audit Trail</strong></td>
+                <td>Non-existent</td>
+                <td>Dedicated AuditService with immutable logs</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Financial Precision</strong></td>
+                <td>JavaScript Number type</td>
+                <td>Decimal.js + PostgreSQL DECIMAL</td>
+                <td>
+                  <span class="status-badge status-current">CRITICAL</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Deposit Flow</strong></td>
+                <td>Incomplete wallet generation logic</td>
+                <td>Full BitGo integration with webhooks</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>Auto-Sweep to Pool</strong></td>
+                <td>Not implemented</td>
+                <td>Background worker with Gas Tank automation</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>Off-Chain Transfers</strong></td>
+                <td>Race conditions, no contact integration</td>
+                <td>Pessimistic locking + phone number mapping</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>External Withdrawals</strong></td>
+                <td>Broken address detection & fees</td>
+                <td>Accurate detection + configurable service fees</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>SSL Certificate Pinning</strong></td>
+                <td>Not implemented in Flutter</td>
+                <td>Pinned certificates in mobile app</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>API Gateway & WAF</strong></td>
+                <td>Direct backend exposure</td>
+                <td>API Gateway + WAF + Rate Limiting</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>Monitoring & Health Checks</strong></td>
+                <td>No production monitoring</td>
+                <td>Basic monitoring with health checks</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>CI/CD Pipeline</strong></td>
+                <td>Manual deployments</td>
+                <td>Automated pipeline with security scanning</td>
+                <td><span class="status-badge status-current">HIGH</span></td>
+              </tr>
+              <tr>
+                <td><strong>Database Architecture</strong></td>
+                <td>No replication, missing indexes</td>
+                <td>Read replicas + optimized indexes</td>
+                <td><span class="status-badge status-current">MEDIUM</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4: Technical Scope & Deliverables -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">4</div>
+            <div>
+              <h2 class="section-title">Technical Scope & Deliverables</h2>
+              <p class="section-subtitle">
+                Complete rebuild aligned with SAD v1.1 architecture
+              </p>
+            </div>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin-bottom: 2rem;
+            "
+          >
+            A. Security-by-Design Implementation
+          </h3>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-key"></i></div>
+              <div class="technical-title">
+                Secrets & Configuration Management
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Remove all hardcoded
+                  credentials from codebase
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement AWS Secrets
+                  Manager/Vault integration
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Centralized ConfigService
+                  for all environments
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Rotate all exposed API keys
+                  immediately
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Git pre-commit hooks to
+                  prevent secret leaks
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-user-shield"></i>
+              </div>
+              <div class="technical-title">Authentication & Authorization</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Complete JWT signature &
+                  claims validation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Secure all unprotected API
+                  endpoints
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Middleware enforcement on
+                  all protected routes
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Refresh token mechanism
+                  with rotation
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-shield-virus"></i>
+              </div>
+              <div class="technical-title">Input Validation & Sanitization</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Zod schema validation on
+                  all API endpoints
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Server-side validation for
+                  Server Actions
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>XSS prevention with input
+                  sanitization
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>SQL injection prevention
+                  (parameterized queries)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Rate limiting on all
+                  endpoints
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-file-code"></i></div>
+              <div class="technical-title">
+                Enterprise Logging Infrastructure
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Replace console.log with
+                  structured logging
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>JSON formatted logs for
+                  parsing
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Remove ALL debug logs from
+                  production builds
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>PII/sensitive data
+                  sanitization in logs
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Centralized log aggregation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Log levels: ERROR, WARN,
+                  INFO, DEBUG
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-history"></i></div>
+              <div class="technical-title">Immutable Audit Trail System</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Design & implement
+                  AuditService module
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Log all authentication
+                  events (success/fail)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Track all financial
+                  transactions with metadata
+                </li>
+                <li><i class="fas fa-check-circle"></i>Tamper-proof logging</li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Audit report generation
+                  APIs
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-calculator"></i>
+              </div>
+              <div class="technical-title">
+                Financial Precision Implementation
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Replace ALL Number types
+                  with Decimal.js
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Update PostgreSQL schema to
+                  DECIMAL(20,8)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Refactor all balance
+                  calculation logic
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement proper rounding
+                  strategies
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-lock"></i></div>
+              <div class="technical-title">Mobile Security Hardening</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement SSL/TLS
+                  certificate pinning
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Configure Dio client with
+                  pinned certificates
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Certificate rotation
+                  mechanism
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Secure local storage
+                  encryption
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin: 4rem 0 2rem;
+            "
+          >
+            B. Core Transaction System Implementation
+          </h3>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-download"></i></div>
+              <div class="technical-title">1. Deposit Flow (On-Chain)</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement unique Tron
+                  wallet generation per user
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>BitGo API integration for
+                  address creation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Webhook listener for
+                  deposit confirmations
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Network gas fee calculation
+                  & display
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Balance update after
+                  blockchain confirmation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Retry mechanism for failed
+                  operations
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>FCM notifications on status
+                  changes
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-arrows-alt-h"></i>
+              </div>
+              <div class="technical-title">
+                2. Auto-Sweep to Pool (On-Chain)
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Automatic transfer to
+                  company pool wallet
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Setup and configure Gas
+                  Tank wallet
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Automate gas fee payment
+                  from Gas Tank
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Background worker with
+                  BullMQ
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Transaction atomicity
+                  guarantee
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Idempotency to prevent
+                  duplicates
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Seamless user experience
+                  (invisible process)
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-people-arrows"></i>
+              </div>
+              <div class="technical-title">
+                3. Internal Transfer (Off-Chain)
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i
+                  ><strong>Scenario A:</strong> Direct wallet address input
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Validate recipient address
+                  in database
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Atomic ledger updates
+                  (debit/credit)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i
+                  ><strong>Scenario B:</strong> Contact list transfer
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Device contacts integration
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Phone number to wallet
+                  address mapping
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Invitation flow for
+                  unregistered contacts
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Pessimistic locking to
+                  prevent race conditions
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Real-time balance updates
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-share-square"></i>
+              </div>
+              <div class="technical-title">
+                4. External Withdrawal (On-Chain)
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Automatic address type
+                  detection
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Accurate network gas fee
+                  calculation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Configurable service fee
+                  mechanism
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Total cost breakdown
+                  display
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Blockchain transaction
+                  broadcasting
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Confirmation tracking with
+                  TX hash
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Comprehensive error
+                  handling
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin: 4rem 0 2rem;
+            "
+          >
+            C. Production Infrastructure & DevOps
+          </h3>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-network-wired"></i>
+              </div>
+              <div class="technical-title">API Gateway & Security Layer</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Deploy API Gateway for
+                  request routing
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Configure WAF with security
+                  rules
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement rate limiting
+                  policies
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>CORS policy with domain
+                  whitelist
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-server"></i></div>
+              <div class="technical-title">Cloud Infrastructure Setup</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Production-grade AWS/Azure
+                  architecture
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Load balancers &
+                  auto-scaling groups
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Blue-green deployment
+                  strategy
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Database replication
+                  (master-replica)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>CDN configuration for
+                  static assets
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-infinity"></i></div>
+              <div class="technical-title">CI/CD Pipeline</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Automated build, test,
+                  deploy pipeline
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Dependency vulnerability
+                  scanning
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Build fails on critical
+                  vulnerabilities
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Docker containerization
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="technical-title">Monitoring & Observability</div>
+              <ul class="technical-list">
+                <li><i class="fas fa-check-circle"></i>APM integration</li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Health check endpoints on
+                  all services
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Uptime monitoring &
+                  alerting
+                </li>
+                <li><i class="fas fa-check-circle"></i>Error tracking</li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Real-time operations
+                  dashboard
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-database"></i></div>
+              <div class="technical-title">Database Architecture</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>PostgreSQL with read
+                  replicas
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Optimize indexes for query
+                  performance
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Automated backup strategy
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Point-in-time recovery
+                  capability
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Connection pooling
+                  optimization
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-vial"></i></div>
+              <div class="technical-title">Testing & Quality Assurance</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Unit tests with 80%+
+                  coverage for critical components
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Integration tests for
+                  transaction flows
+                </li>
+                <li><i class="fas fa-check-circle"></i>Load testing</li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Security penetration
+                  testing
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>End-to-end UAT with client
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-book"></i></div>
+              <div class="technical-title">
+                Documentation & Knowledge Transfer
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Complete API documentation
+                  (Swagger)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Operations runbooks &
+                  procedures
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Incident response playbooks
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Admin dashboard user guides
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Knowledge transfer sessions
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div class="technical-title">Code Quality & Architecture</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Refactor NestJS to modular
+                  monolith pattern
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Centralize BitGo service
+                  initialization
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Replace magic numbers with
+                  constants
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Implement error boundaries
+                  in frontends
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Fix dependency version
+                  pinning
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Milestone-Based Delivery -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">5</div>
+            <div>
+              <h2 class="section-title">3-Phase Milestone Delivery Plan</h2>
+              <p class="section-subtitle">
+                SAR 90,000 | 14-16 Weeks | Payment on Acceptance
+              </p>
+            </div>
+          </div>
+
+          <div class="milestone-grid">
+            <!-- Milestone 1 -->
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <div class="milestone-number">Milestone 1</div>
+                <div class="milestone-title">
+                  Core Transaction System & Compliance
+                </div>
+                <div class="milestone-duration">Week 1-8 | 8 Weeks</div>
+              </div>
+              <div class="milestone-body">
+                <h4 class="milestone-section-heading">Key Deliverables</h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-check-circle"></i>Complete deposit flow
+                    with BitGo wallet generation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Auto-sweep to pool wallet
+                    with Gas Tank automation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Internal off-chain
+                    transfers (both scenarios working)
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Contact integration with
+                    phone number mapping
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>External withdrawal with
+                    accurate fee calculation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Background workers with
+                    BullMQ for async processing
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Webhook handlers for
+                    blockchain confirmations
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Comprehensive transaction
+                    testing on Tron testnet
+                  </li>
+                </ul>
+                <h4 class="milestone-section-heading acceptance">
+                  Acceptance Criteria
+                </h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-star"></i>All 4 transaction flows fully
+                    operational
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>50+ successful test transactions
+                    on testnet
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Zero financial calculation errors
+                    in all test cases
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Client UAT sign-off on
+                    transaction workflows
+                  </li>
+                </ul>
+              </div>
+              <div class="milestone-footer">
+                <div class="milestone-cost">SAR 36,000</div>
+                <div class="milestone-payment">
+                  40% | Due at the start of Phase 1
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 2 -->
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <div class="milestone-number">Milestone 2</div>
+                <div class="milestone-title">
+                  Security Foundation & Architecture
+                </div>
+                <div class="milestone-duration">Week 9-12 | 4 Weeks</div>
+              </div>
+              <div class="milestone-body">
+                <h4 class="milestone-section-heading">Key Deliverables</h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-check-circle"></i>Complete secrets
+                    management implementation (AWS Secrets Manager)
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Full JWT authentication
+                    with signature & claims validation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Zod validation on all API
+                    endpoints
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Tamper-proof logging
+                    infrastructure
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Immutable audit trail
+                    system operational
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Financial precision with
+                    Decimal.js implementation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>SSL certificate pinning
+                    in Flutter app
+                  </li>
+                </ul>
+                <h4 class="milestone-section-heading acceptance">
+                  Acceptance Criteria
+                </h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-star"></i>Zero CRITICAL security
+                    vulnerabilities
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>All audit findings logged
+                    correctly
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Security audit report showing
+                    compliance
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Code review approval from client
+                    CTO/tech lead
+                  </li>
+                </ul>
+              </div>
+              <div class="milestone-footer">
+                <div class="milestone-cost">SAR 36,000</div>
+                <div class="milestone-payment">
+                  40% | Due at the start of Phase 2
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 3 -->
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <div class="milestone-number">Milestone 3</div>
+                <div class="milestone-title">
+                  Infrastructure, Testing & Production Launch
+                </div>
+                <div class="milestone-duration">Week 13-16 | 4 Weeks</div>
+              </div>
+              <div class="milestone-body">
+                <h4 class="milestone-section-heading">Key Deliverables</h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-check-circle"></i>Production cloud
+                    infrastructure setup (AWS/Azure)
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>API Gateway + WAF + rate
+                    limiting deployment
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>CI/CD pipeline with
+                    security scanning
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Database replication and
+                    backup automation
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Basic monitoring
+                    infrastructure with health checks
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Error tracking
+                    integration
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Complete technical
+                    documentation suite
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Operations runbooks and
+                    incident playbooks
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Production deployment
+                    with monitoring
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>Knowledge transfer
+                    sessions (3 sessions)
+                  </li>
+                </ul>
+                <h4 class="milestone-section-heading acceptance">
+                  Acceptance Criteria
+                </h4>
+                <ul class="milestone-deliverables">
+                  <li>
+                    <i class="fas fa-star"></i>Successful production deployment
+                    with zero downtime
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>All monitoring & alerting
+                    operational
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Complete documentation delivered
+                  </li>
+                  <li>
+                    <i class="fas fa-star"></i>Client final acceptance sign-off
+                  </li>
+                </ul>
+              </div>
+              <div class="milestone-footer">
+                <div class="milestone-cost">SAR 18,000</div>
+                <div class="milestone-payment">
+                  20% | Due at the start of Phase 3
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="info-box"
+            style="margin-top: 3rem; border-left-color: #16a34a"
+          >
+            <div class="info-box-icon" style="color: #16a34a">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h4>Payment Terms & Milestone Acceptance</h4>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li
+                style="
+                  padding: 0.75rem 0;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 1rem;
+                "
+              >
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem; flex-shrink: 0"
+                ></i
+                ><span
+                  ><strong>Acceptance Period:</strong> 5 business days review
+                  period per milestone with written acceptance/rejection</span
+                >
+              </li>
+              <li
+                style="
+                  padding: 0.75rem 0;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 1rem;
+                "
+              >
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem; flex-shrink: 0"
+                ></i
+                ><span
+                  ><strong>Payment Trigger:</strong> Invoice issued upon
+                  milestone acceptance, payment due within 7 days</span
+                >
+              </li>
+              <li
+                style="
+                  padding: 0.75rem 0;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 1rem;
+                "
+              >
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem; flex-shrink: 0"
+                ></i
+                ><span
+                  ><strong>Rejection Process:</strong> Specific, documented
+                  reasons required; Bitroxy remedies within 5 days</span
+                >
+              </li>
+              <li
+                style="
+                  padding: 0.75rem 0;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 1rem;
+                "
+              >
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem; flex-shrink: 0"
+                ></i
+                ><span
+                  ><strong>Scope Freeze:</strong> No scope changes during
+                  milestone execution; new requirements via separate CR</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Project Timeline -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">6</div>
+            <div>
+              <h2 class="section-title">Detailed Execution Timeline</h2>
+              <p class="section-subtitle">
+                14-16 weeks from kickoff to production
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Week 1-8: Core Transaction System
+              </h3>
+              <p
+                style="
+                  color: #64748b;
+                  font-size: 1.05rem;
+                  line-height: 1.8;
+                  margin-bottom: 1rem;
+                "
+              >
+                <strong>Focus:</strong> Complete implementation of all 4
+                transaction workflows
+              </p>
+              <p style="color: #64748b; font-size: 1rem; line-height: 1.8">
+                <strong>Week 1-3:</strong> Deposit flow + auto-sweep to pool
+                with Gas Tank<br />
+                <strong>Week 4-6:</strong> Internal transfers (on/off-chain) +
+                contact integration<br />
+                <strong>Week 7-8:</strong> External withdrawals + background
+                workers + M1 testing & delivery
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Week 9-12: Security Foundation
+              </h3>
+              <p
+                style="
+                  color: #64748b;
+                  font-size: 1.05rem;
+                  line-height: 1.8;
+                  margin-bottom: 1rem;
+                "
+              >
+                <strong>Focus:</strong> Security architecture implementation per
+                SAD v1.1
+              </p>
+              <p style="color: #64748b; font-size: 1rem; line-height: 1.8">
+                <strong>Week 9-10:</strong> Secrets management, JWT fixes, input
+                validation<br />
+                <strong>Week 11:</strong> Tamper-proof logging infrastructure,
+                audit trails, financial precision<br />
+                <strong>Week 12:</strong> Mobile security, M2 testing & delivery
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Week 13-16: Infrastructure & Launch
+              </h3>
+              <p
+                style="
+                  color: #64748b;
+                  font-size: 1.05rem;
+                  line-height: 1.8;
+                  margin-bottom: 1rem;
+                "
+              >
+                <strong>Focus:</strong> Production infrastructure, comprehensive
+                testing, deployment
+              </p>
+              <p style="color: #64748b; font-size: 1rem; line-height: 1.8">
+                <strong>Week 13:</strong> Cloud infrastructure + API Gateway/WAF
+                + CI/CD<br />
+                <strong>Week 14:</strong> Monitoring setup + load testing +
+                penetration testing<br />
+                <strong>Week 15:</strong> UAT + documentation + knowledge
+                transfer<br />
+                <strong>Week 16:</strong> Production deployment + M3 delivery +
+                handover
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box" style="margin-top: 3rem">
+            <div class="info-box-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h4>Timeline Dependencies & Assumptions</h4>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li style="padding: 0.75rem 0">
+                <strong>Client Response Time:</strong> Feedback/approvals within
+                2 business days to maintain schedule
+              </li>
+              <li style="padding: 0.75rem 0">
+                <strong>Access Provided:</strong> Complete repository,
+                infrastructure, and API credentials within 2 days of kickoff
+              </li>
+              <li style="padding: 0.75rem 0">
+                <strong>Third-Party Services:</strong> BitGo account ready,
+                Chainalysis API access, Cloud provider account
+              </li>
+              <li style="padding: 0.75rem 0">
+                <strong>Scope Stability:</strong> No major scope changes;
+                changes handled via separate CR with timeline impact
+              </li>
+              <li style="padding: 0.75rem 0">
+                <strong>Team Continuity:</strong> Dedicated Bitroxy team
+                working full-time throughout project
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Team & Success Criteria -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">7</div>
+            <div>
+              <h2 class="section-title">Team Composition & Success Metrics</h2>
+              <p class="section-subtitle">
+                Expert team with measurable outcomes
+              </p>
+            </div>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin-bottom: 2rem;
+            "
+          >
+            Dedicated Project Team
+          </h3>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-user-tie"></i></div>
+              <div class="technical-title">Technical Project Manager</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check"></i>Oversees entire CR execution
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Daily progress tracking &
+                  reporting
+                </li>
+                <li><i class="fas fa-check"></i>Stakeholder communication</li>
+                <li>
+                  <i class="fas fa-check"></i>Risk management & mitigation
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Milestone coordination & delivery
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Security analysis & vulnerability
+                  assessments
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>DevOps & infrastructure management
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fab fa-bitcoin"></i></div>
+              <div class="technical-title">Blockchain + NestJS Developer</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check"></i>Blockchain integration & wallet
+                  management
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Transaction system implementation
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>NestJS backend security hardening
+                </li>
+                <li><i class="fas fa-check"></i>BitGo API integration</li>
+                <li><i class="fas fa-check"></i>Gas Tank wallet automation</li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-server"></i></div>
+              <div class="technical-title">Backend Developer (NestJS)</div>
+              <ul class="technical-list">
+                <li><i class="fas fa-check"></i>API security implementation</li>
+                <li>
+                  <i class="fas fa-check"></i>Authentication & authorization
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Logging & audit trail system
+                </li>
+                <li><i class="fas fa-check"></i>Database optimization</li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-desktop"></i></div>
+              <div class="technical-title">
+                Frontend Developer (Next.js + React)
+              </div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check"></i>Admin dashboard security fixes
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>Pool system dashboard updates
+                </li>
+                <li><i class="fas fa-check"></i>Client-side validation</li>
+                <li><i class="fas fa-check"></i>Real-time UI updates</li>
+                <li>
+                  <i class="fas fa-check"></i>Operations monitoring dashboard
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="technical-title">Flutter Developer</div>
+              <ul class="technical-list">
+                <li><i class="fas fa-check"></i>Mobile app security fixes</li>
+                <li><i class="fas fa-check"></i>SSL certificate pinning</li>
+                <li><i class="fas fa-check"></i>Contact integration</li>
+                <li><i class="fas fa-check"></i>Transaction flow UI</li>
+                <li><i class="fas fa-check"></i>Error handling improvements</li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-vial"></i></div>
+              <div class="technical-title">QA Engineer</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check"></i>Test plan creation & execution
+                </li>
+                <li><i class="fas fa-check"></i>Unit & integration testing</li>
+                <li><i class="fas fa-check"></i>Load & performance testing</li>
+                <li><i class="fas fa-check"></i>UAT coordination</li>
+                <li><i class="fas fa-check"></i>Test automation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="info-box"
+            style="margin-top: 2rem; border-left-color: #3b82f6"
+          >
+            <i class="fas fa-info-circle" style="color: #3b82f6"></i>
+            <p>
+              <strong>Note on Team Size:</strong> The team composition outlined
+              above is optimized for MVP development with a lean, efficient
+              structure. For a full-fledged fintech application with expanded
+              features and higher scale requirements, the team size will be
+              increased accordingly with additional specialized roles to ensure
+              comprehensive coverage of all technical and operational aspects.
+            </p>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin: 4rem 0 2rem;
+            "
+          >
+            Success Metrics & KPIs
+          </h3>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-shield-virus"></i>
+              </div>
+              <div class="technical-title">Security Metrics</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Zero CRITICAL
+                  vulnerabilities remaining
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Zero HIGH severity
+                  vulnerabilities
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Penetration test passed
+                  with no findings
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>All secrets managed
+                  securely
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>OWASP Top 10 compliance
+                  achieved
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-check-double"></i>
+              </div>
+              <div class="technical-title">Functional Completeness</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>All 4 transaction flows
+                  operational
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>100% of business
+                  requirements implemented
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Contact-based transfers
+                  working
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Gas Tank automation
+                  functioning
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Fee calculations accurate
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-code"></i></div>
+              <div class="technical-title">Code Quality Standards</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>All integration tests
+                  passing
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Zero high-priority code
+                  smells
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Technical debt ratio < 5%
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Clean architecture
+                  maintained
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-book"></i></div>
+              <div class="technical-title">Documentation Standards</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Complete API documentation
+                  (Swagger)
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Operations runbooks
+                  delivered
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Security procedures
+                  documented
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Knowledge transfer
+                  completed
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <div class="technical-title">Compliance & Audit</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>All transactions auditable
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Security events logged
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Financial reconciliation
+                  working
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Compliance reports
+                  generated
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Risk Management -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">8</div>
+            <div>
+              <h2 class="section-title">Risk Management Strategy</h2>
+              <p class="section-subtitle">
+                Proactive identification and mitigation of project risks
+              </p>
+            </div>
+          </div>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Risk Category</th>
+                <th>Potential Impact</th>
+                <th>Mitigation Strategy</th>
+                <th>Contingency Plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Scope Creep</strong></td>
+                <td>Timeline delays, budget overruns</td>
+                <td>Strict change control process, documented scope freezes</td>
+                <td>Additional features handled via separate CRs</td>
+              </tr>
+              <tr>
+                <td><strong>Technical Complexity</strong></td>
+                <td>Implementation challenges, delays</td>
+                <td>Early spike solutions, parallel development tracks</td>
+                <td>
+                  Escalate to senior architects, extend timeline if needed
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Third-Party Dependencies</strong></td>
+                <td>BitGo API issues, blockchain delays</td>
+                <td>
+                  Early integration testing, fallback providers identified
+                </td>
+                <td>Switch to alternative wallet provider if critical</td>
+              </tr>
+              <tr>
+                <td><strong>Security Vulnerabilities</strong></td>
+                <td>New vulnerabilities discovered during work</td>
+                <td>Continuous security scanning, weekly audits</td>
+                <td>Immediate remediation, extend milestone if severe</td>
+              </tr>
+              <tr>
+                <td><strong>Performance Issues</strong></td>
+                <td>System not meeting performance targets</td>
+                <td>Load testing from week 1, incremental optimization</td>
+                <td>
+                  Architecture review, caching strategies, database tuning
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Team Availability</strong></td>
+                <td>Key team member unavailability</td>
+                <td>Cross-training, comprehensive documentation</td>
+                <td>Immediate replacement with equivalent skill level</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 9: Post-Deployment Support -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">9</div>
+            <div>
+              <h2 class="section-title">Post-Deployment Support</h2>
+              <p class="section-subtitle">
+                Warranty and ongoing maintenance options
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box success">
+            <div class="info-box-icon" style="color: #16a34a">
+              <i class="fas fa-gift"></i>
+            </div>
+            <h4>Included: 30-Day Warranty Support</h4>
+            <p>
+              Following production deployment, Bitroxy provides
+              <strong>30 days of complimentary warranty support</strong> at no
+              additional cost. This covers:
+            </p>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem">
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                >Bug fixes directly related to CR deliverables
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                >Issue resolution for production incidents
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                >Technical support for deployed systems
+              </li>
+              <li style="padding: 0.75rem 0; display: flex; gap: 1rem">
+                <i
+                  class="fas fa-check-circle"
+                  style="color: #16a34a; margin-top: 0.25rem"
+                ></i
+                >Response time: 4 business hours for critical issues
+              </li>
+            </ul>
+          </div>
+
+          <h3
+            style="
+              font-size: 2rem;
+              color: #0f172a;
+              font-weight: 700;
+              margin: 3rem 0 2rem;
+            "
+          >
+            Recommended: Ongoing Support Packages
+          </h3>
+          <p
+            style="
+              color: #64748b;
+              font-size: 1.1rem;
+              line-height: 1.8;
+              margin-bottom: 2.5rem;
+            "
+          >
+            After the 30-day warranty period, consider one of our dedicated
+            support packages for continuous platform maintenance and security
+            monitoring.
+          </p>
+
+          <div
+            style="
+              background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+              border-radius: 16px;
+              padding: 2.5rem;
+              border: 3px solid #3b82f6;
+            "
+          >
+            <div style="text-align: center">
+              <h4
+                style="
+                  font-size: 1.5rem;
+                  color: #1e40af;
+                  font-weight: 700;
+                  margin-bottom: 1rem;
+                "
+              >
+                Recommended: Professional Support Package
+              </h4>
+              <p
+                style="
+                  color: #1e3a8a;
+                  font-size: 1.05rem;
+                  margin-bottom: 1.5rem;
+                "
+              >
+                SAR 16,000/month | 24/7 Emergency Coverage | Technical Project
+                Manager Included
+              </p>
+              <p style="color: #475569; font-size: 0.95rem">
+                Seamless transition from CR completion to ongoing maintenance
+                ensures platform stability and continuous security monitoring as
+                your user base grows.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10: Terms & Conditions -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">10</div>
+            <div>
+              <h2 class="section-title">Terms & Conditions</h2>
+              <p class="section-subtitle">
+                Legal framework and engagement terms
+              </p>
+            </div>
+          </div>
+
+          <div class="technical-grid">
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-file-signature"></i>
+              </div>
+              <div class="technical-title">Contract Structure</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>Fixed-price contract for defined
+                  scope
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>3 milestone-based payment
+                  schedule
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Master Services Agreement (MSA)
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Statement of Work (SOW) for CR
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Non-Disclosure Agreement (NDA)
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-gavel"></i></div>
+              <div class="technical-title">Intellectual Property</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>All code ownership transfers to
+                  OmlaPay
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>IP rights granted upon final
+                  payment
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Bitroxy retains portfolio
+                  rights
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Source code delivered via private
+                  repo
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>No reuse of client-specific code
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="technical-title">Limitations & Exclusions</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>Scope limited to defined
+                  deliverables
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Infrastructure costs not included
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Third-party service fees excluded
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>New features require separate CR
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Client delay beyond 5 days incurs
+                  adjustment
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-sync-alt"></i></div>
+              <div class="technical-title">Change Management</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>Formal change request process
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Impact assessment within 2 days
+                </li>
+                <li><i class="fas fa-circle"></i>Written approval required</li>
+                <li>
+                  <i class="fas fa-circle"></i>Timeline/cost adjustments
+                  documented
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Minor changes absorbed; major
+                  charged
+                </li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon">
+                <i class="fas fa-times-circle"></i>
+              </div>
+              <div class="technical-title">Termination Clause</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>Either party: 30-day written
+                  notice
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Payment for completed milestones
+                  due
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Partial milestone pro-rated
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>All deliverables handed over
+                </li>
+                <li><i class="fas fa-circle"></i>No penalty for termination</li>
+              </ul>
+            </div>
+
+            <div class="technical-card">
+              <div class="technical-icon"><i class="fas fa-globe"></i></div>
+              <div class="technical-title">Governing Law</div>
+              <ul class="technical-list">
+                <li>
+                  <i class="fas fa-circle"></i>Governed by UAE/KSA commercial
+                  law
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Disputes: Mediation first, then
+                  arbitration
+                </li>
+                <li>
+                  <i class="fas fa-circle"></i>Jurisdiction: Dubai/Riyadh courts
+                </li>
+                <li><i class="fas fa-circle"></i>English language prevails</li>
+                <li>
+                  <i class="fas fa-circle"></i>Force majeure provisions included
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 11: Next Steps -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-number">11</div>
+            <div>
+              <h2 class="section-title">Next Steps to Begin</h2>
+              <p class="section-subtitle">
+                Simple process to kickoff CR execution
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Step 1: Proposal Review & Q&A
+              </h3>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                <strong>Duration:</strong> 2-3 Days<br />
+                Review this CR proposal alongside the detailed audit report,
+                schedule clarification call to discuss technical approach and
+                timeline, confirm scope alignment with business requirements,
+                address any questions or concerns
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Step 2: Contract Execution
+              </h3>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                <strong>Duration:</strong> 2-3 Days<br />
+                Execute Master Services Agreement and NDA, sign Change Request
+                Statement of Work, finalize milestone acceptance criteria,
+                process Milestone 1 advance payment (SAR 36,000)
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Step 3: Project Kickoff & Access
+              </h3>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                <strong>Duration:</strong> 1-2 Days<br />
+                Setup project management tools (JIRA, Slack), provide complete
+                repository and infrastructure access, share BitGo credentials
+                and API documentation, conduct kickoff meeting with all
+                stakeholders
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #0f172a;
+                  margin-bottom: 0.75rem;
+                "
+              >
+                Step 4: Begin Milestone 1 Execution
+              </h3>
+              <p style="color: #64748b; font-size: 1.05rem; line-height: 1.8">
+                <strong>Start Date:</strong> Day 1 of Week 1<br />
+                Team begins security foundation work, daily standups and
+                progress reports commence, continuous collaboration via
+                Slack/Email, weekly stakeholder review meetings scheduled
+              </p>
+            </div>
+          </div>
+
+          <div class="info-box critical" style="margin-top: 3rem">
+            <div class="info-box-icon"><i class="fas fa-rocket"></i></div>
+            <h4>Ready to Transform OmlaPay into Production-Ready Platform?</h4>
+            <p style="margin-bottom: 1.75rem">
+              The current MVP contains critical vulnerabilities that must be
+              addressed before public launch. This CR provides a comprehensive
+              solution to secure the platform, implement the core transaction
+              system correctly, and ensure enterprise-grade stability for
+              handling real user funds.
+            </p>
+            <p style="margin-bottom: 1.75rem; font-size: 1.05rem">
+              <strong>Primary Contact:</strong><br />
+              <strong>Bitroxy Team</strong> - Innovation & Technology Solutions<br />
+              <strong>Email:</strong> info@bitroxy.co<br />
+              <strong>Phone:</strong> +91 7907264669 |
+              <strong>WhatsApp:</strong> Available
+            </p>
+            <div
+              style="
+                padding: 2rem;
+                background: rgba(220, 38, 38, 0.1);
+                border-radius: 12px;
+                border: 2px solid #dc2626;
+              "
+            >
+              <p
+                style="
+                  font-weight: 700;
+                  color: #991b1b;
+                  font-size: 1.15rem;
+                  text-align: center;
+                  margin: 0;
+                "
+              >
+                <i class="fas fa-clock"></i> Proposal Valid for 15 Days | Ready
+                to Start Immediately Upon Approval
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+              border-radius: 20px;
+              padding: 3rem;
+              margin-top: 3rem;
+              border: 4px solid #fbbf24;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                font-size: 2.25rem;
+                color: #92400e;
+                font-weight: 900;
+                margin-bottom: 1rem;
+              "
+            >
+              Total Project Investment
+            </h3>
+            <div
+              style="
+                font-size: 4.5rem;
+                font-weight: 900;
+                color: #78350f;
+                margin-bottom: 1rem;
+              "
+            >
+              SAR 90,000
+            </div>
+            <p
+              style="
+                font-size: 1.25rem;
+                color: #92400e;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+              "
+            >
+              14-16 Weeks | 3 Milestone Payments | 30-Day Warranty Included
+            </p>
+            <p style="font-size: 1.05rem; color: #78350f; font-weight: 600">
+              Secure Platform + Functional Transaction System + Enterprise
+              Infrastructure
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>BITROXY</h4>
+            <p style="font-weight: 600; color: #e5e7eb">
+              Creativity Meets Innovation
+            </p>
+            <p style="font-size: 0.9rem">
+              Transforming businesses with secure, scalable, and innovative
+              technology solutions across Saudi Arabia, UAE, and globally.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Information</h4>
+            <a href="mailto:info@bitroxy.co" class="footer-contact-item">
+              <i class="fas fa-envelope"></i>info@bitroxy.co
+            </a>
+            <a href="tel:+917907264669" class="footer-contact-item">
+              <i class="fas fa-phone"></i>+91 7907264669
+            </a>
+            <a
+              href="http://bitroxy.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-contact-item"
+            >
+              <i class="fas fa-globe"></i>bitroxy.co
+            </a>
+            <p class="footer-contact-item">
+              <i class="fas fa-map-marker-alt"></i>Kozhikode, Kerala, India
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Change Request Details</h4>
+            <p><strong>CR Reference:</strong> BTX-2025-OML-CR-MVP1-002</p>
+            <p><strong>Date:</strong> October 12, 2025</p>
+            <p><strong>Validity:</strong> 15 Days</p>
+            <p><strong>Version:</strong> Enterprise Architecture Enhanced</p>
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+          "
+        >
+          <p class="footer-copyright">
+            copyright and design: bitroxy
+          </p>
+          <p
+            style="
+              font-size: 0.85rem;
+              color: #6b7280;
+              margin-top: 1rem;
+              line-height: 1.6;
+            "
+          >
+            This Change Request contains confidential and proprietary
+            information. The scope, deliverables, timeline, and pricing are
+            based on current requirements and audit findings. Any significant
+            changes to scope will be handled through a formal change control
+            process.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(
+          ".technical-card, .milestone-card, .timeline-item, .info-box"
+        )
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+
+      console.log(
+        "OmlaPay Phase 1 MVP Enhancement - Enterprise Architecture & Security Enhancement"
+      );
+    </script>
+  </body>
+</html>
